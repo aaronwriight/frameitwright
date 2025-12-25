@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "404 | frame it wright photography",
     description: "",
-    images: ["/Users/aaronwright/Documents/GitHub/aaronwriight/frameitwright/images/sand_dollar.png"], 
+    images: ["/images/sand_dollar.png"], 
     authors: ["https://aaronwriight.github.io"],
   },
 };
@@ -23,7 +23,7 @@ export default function NotFound() {
             You really are lost.
           </h1>
           <p className="m-0 mt-2 text-sm  antialiased">
-            Return to the <Link href="/">directory</Link>.
+            Return <Link href="/"><u>home</u></Link>.
           </p>
         </div>
       </main>

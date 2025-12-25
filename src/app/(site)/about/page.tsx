@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "frame it wright photography",
     description: "an ode to slow living",
-    images: ["/Users/aaronwright/Documents/GitHub/aaronwriight/frameitwright/images/sand_dollar.png"],
+    images: [""],
     authors: ["https://aaronwriight.github.io"],
   },
 };
@@ -18,8 +18,7 @@ export default function about() {
       <div>
         <h2 className="m-0  text-sm  font-medium antialiased"><b>bio</b></h2>
         <p className="m-0 mt-2 text-sm  antialiased">
-          A photographic archive by <Link href="https://aaronwriight.github.io">Aaron Wright</Link>. A 2025 iteration of a 2020 concept.
-          A digital journal of sorts – something to keep my life in science balanced.
+          A journal by <Link href="https://aaronwriight.github.io">Aaron Wright</Link>. A 2025 iteration of a 2020 concept – something to keep my life in science balanced.
         </p>
       </div>
       <div>

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "frame it wright photography",
     description: "an ode to slow living",
-    images: ["/Users/aaronwright/Documents/GitHub/aaronwriight/frameitwright/images/sand_dollar.png"],
+    images: [""],
     authors: ["https://aaronwriight.github.io"],
   },
 };

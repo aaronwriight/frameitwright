@@ -15,11 +15,11 @@ export const metadata: Metadata = {
 export default function Colophon() {
   return (
     <main className="prose prose-stone dark:prose-invert prose-base container mx-auto  flex-1 space-y-7 px-6 py-11">
-      <h1 className="m-0 text-sm font-medium antialiased">Colophon</h1>
+      <h1 className="m-0 text-sm font-medium antialiased">About</h1>
       <div>
         <h2 className="m-0  text-sm  font-medium antialiased">What</h2>
         <p className="m-0 mt-2 text-sm  antialiased">
-          A photographic archive by{" "}
+          A photographic archive by{"Aaron Wright"}
           <Link href="https://aaronwriight.github.io">aaronwriight</Link>. Pre
           social-networks (around 2004-8) this is what I and most of used to do
           with our photos. This is a bit of a digital garden for me to test out

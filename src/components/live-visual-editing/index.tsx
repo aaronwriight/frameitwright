@@ -13,23 +13,20 @@ export default function LiveVisualEditing() {
   useEffect(() => {
     let cancelled = false
 
-    // dynamic import avoids static-analysis errors during build
+    // TypeScript
     ;(async () => {
       try {
-        const mod = await import('@sanity/visual-editing')
-        // new versions expose enableVisualEditing (or similar). call if available.
-        const enable = mod.enableVisualEditing ?? mod.default ?? null
+        const mod = (await import('@sanity/visual-editing')) as any
+        const enable = mod.enableVisualEditing ?? mod.enable ?? mod.VisualEditing ?? mod.default ?? null
         if (enable && !cancelled) {
-          // many versions accept an options object; pass the client if supported.
           try {
             enable({ client: stegaClient })
           } catch {
-            // fallback: try calling without args
             try { enable() } catch { /* ignore */ }
           }
         }
       } catch {
-        // If import fails, visual editing simply won't be enabled
+        // import failed — visual editing won't be enabled
       }
     })()
 

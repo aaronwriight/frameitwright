@@ -12,27 +12,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Colophon() {
+export default function about_page() {
   return (
     <main className="prose prose-stone dark:prose-invert prose-base container mx-auto  flex-1 space-y-7 px-6 py-11">
-      <h1 className="m-0 text-sm font-medium antialiased">About</h1>
+      <h1 className="m-0 text-sm font-medium antialiased"><b>About</b></h1>
       <div>
-        <h2 className="m-0  text-sm  font-medium antialiased">What</h2>
+        <h2 className="m-0  text-sm  font-medium antialiased">.</h2>
         <p className="m-0 mt-2 text-sm  antialiased">
-          A photographic archive by{"Aaron Wright"}
-          <Link href="https://aaronwriight.github.io">aaronwriight</Link>. Pre
-          social-networks (around 2004-8) this is what I and most of used to do
-          with our photos. This is a bit of a digital garden for me to test out
-          other technology and design combinations away from my work web
-          presence.
-        </p>
-        <p className="mt-2 text-sm  antialiased">
-          I am particualy interested in capturing the banality of the seaside
-          and the looming precense of the countryside.
+          A photographic archive by{""}
+          <Link href="https://aaronwriight.github.io">Aaron Wright</Link>. A 2025 iteration of a 2020 concept.
+          A digital journal of sorts – something to keep my life in science balanced.
         </p>
       </div>
       <div>
-        <h2 className="m-0  text-sm  font-medium antialiased">Typography</h2>
+        <h2 className="m-0  text-sm  font-medium antialiased">..</h2>
         <p className="m-0 mt-2 text-sm  antialiased">
           Set in <Link href="https://vercel.com/font/sans">Geist Sans</Link> and{" "}
           <Link href="https://vercel.com/font/mono">Geist Mono</Link> by Vercel.
@@ -42,13 +35,16 @@ export default function Colophon() {
         </p>
       </div>
       <div>
-        <h2 className="m-0  text-sm  font-medium antialiased">Technology</h2>
+        <h2 className="m-0  text-sm  font-medium antialiased">...</h2>
         <p className="m-0 mt-2 text-sm  antialiased">
           Written in React via <Link href="https://nextjs.org">Next.js</Link>{" "}
           with <Link href="https://sanity.io">Sanity</Link> providing the CMS.
           Styling with <Link href="https://tailwindcss.com">Tailwind</Link>.
           Hosted on <Link href="https://vercel.com">Vercel</Link>. Analytics by
           privacy focussed <Link href="https://plausible.io">Plausible</Link>
+        </p>
+        <p className="m-0 mt-2 text-sm antialiasted">
+          Forked on GitHub from <Link href="https://github.com/tbrasington/the-post-chaise-site">Thomas Brasington</Link>.
         </p>
       </div>
     </main>

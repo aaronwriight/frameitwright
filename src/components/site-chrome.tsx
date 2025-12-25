@@ -33,8 +33,8 @@ export default   function SiteChrome({
             {children}
 
             <footer className="container mx-auto flex  px-6 justify-between gap-4 py-20 text-stone-500">
-              <Link href="/colophon" className="text-stone-500">
-                Colophon
+              <Link href="/about" className="text-stone-500">
+                about
               </Link>{" "}
               <span>© {new Date().getFullYear()} Aaron Wright</span>
             </footer>

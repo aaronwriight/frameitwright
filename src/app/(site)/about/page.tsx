@@ -17,15 +17,14 @@ export default function about() {
     <main className="prose prose-stone dark:prose-invert prose-base container mx-auto  flex-1 space-y-7 px-6 py-11">
       <h1 className="m-0 text-sm font-medium antialiased"><b>About</b></h1>
       <div>
-        <h2 className="m-0  text-sm  font-medium antialiased">.</h2>
+        <h2 className="m-0  text-sm  font-medium antialiased">bio</h2>
         <p className="m-0 mt-2 text-sm  antialiased">
-          A photographic archive by{""}
-          <Link href="https://aaronwriight.github.io">Aaron Wright</Link>. A 2025 iteration of a 2020 concept.
+          A photographic archive by <Link href="https://aaronwriight.github.io">Aaron Wright</Link>. A 2025 iteration of a 2020 concept.
           A digital journal of sorts – something to keep my life in science balanced.
         </p>
       </div>
       <div>
-        <h2 className="m-0  text-sm  font-medium antialiased">..</h2>
+        <h2 className="m-0  text-sm  font-medium antialiased">typography</h2>
         <p className="m-0 mt-2 text-sm  antialiased">
           Set in <Link href="https://vercel.com/font/sans">Geist Sans</Link> and{" "}
           <Link href="https://vercel.com/font/mono">Geist Mono</Link> by Vercel.
@@ -35,7 +34,7 @@ export default function about() {
         </p>
       </div>
       <div>
-        <h2 className="m-0  text-sm  font-medium antialiased">...</h2>
+        <h2 className="m-0  text-sm  font-medium antialiased">hosting</h2>
         <p className="m-0 mt-2 text-sm  antialiased">
           Written in React via <Link href="https://nextjs.org">Next.js</Link>{" "}
           with <Link href="https://sanity.io">Sanity</Link> providing the CMS.

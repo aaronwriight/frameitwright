@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function about_page() {
+export default function about() {
   return (
     <main className="prose prose-stone dark:prose-invert prose-base container mx-auto  flex-1 space-y-7 px-6 py-11">
       <h1 className="m-0 text-sm font-medium antialiased"><b>About</b></h1>

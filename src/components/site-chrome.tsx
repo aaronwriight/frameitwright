@@ -36,7 +36,7 @@ export default   function SiteChrome({
               <Link href="/colophon" className="text-stone-500">
                 Colophon
               </Link>{" "}
-              <span>© {new Date().getFullYear()} Thomas Brasington</span>
+              <span>© {new Date().getFullYear()} Aaron Wright</span>
             </footer>
           </div>
         </body>

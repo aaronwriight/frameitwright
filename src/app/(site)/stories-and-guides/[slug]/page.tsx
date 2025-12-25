@@ -44,7 +44,7 @@ export async function generateMetadata(
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
-    title: `${initial.data.title} | scope for imagination`,
+    title: `${initial.data.title} | frame it wright photography`,
     description: initial?.data?.seo_description || "",
     openGraph: {
       images: [seoImage, ...previousImages],

@@ -8,11 +8,11 @@ import { draftMode } from "next/headers";
 import GuidesPreview from "@/components/guides/guides-preview";
 import { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "scope for imagination",
+  title: "frame it wright photography",
   description: "an ode to slow living",
   metadataBase: new URL(`https://${process.env.VERCEL_URL}`),
   openGraph: {
-    title: "scope for imagination",
+    title: "frame it wright photography",
     description: "an ode to slow living",
     images: ["/Users/aaronwright/Documents/GitHub/aaronwriight/frameitwright/images/sand_dollar.png"],
     authors: ["https://aaronwriight.github.io"],

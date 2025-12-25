@@ -6,7 +6,7 @@ import { draftMode } from "next/headers";
 import SiteChrome from "@/components/site-chrome";
 
 export const metadata: Metadata = {
-  title: "scope for imagination",
+  title: "frame it wright photography",
   description: "an ode to slow living",
   metadataBase: new URL(`https://${process.env.VERCEL_URL}`),
 };

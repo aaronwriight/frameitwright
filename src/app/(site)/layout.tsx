@@ -8,7 +8,6 @@ import SiteChrome from "@/components/site-chrome";
 export const metadata: Metadata = {
   title: "frame it wright photography",
   description: "an ode to slow living",
-  images: ["/images/sand_dollar.png"], 
   metadataBase: new URL(`https://${process.env.VERCEL_URL}`),
 };
 

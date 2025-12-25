@@ -6,6 +6,7 @@ import "./globals.css";
 import { Logo } from "@/components/logo/logo";
 import Link from "next/link";
 
+/* LINE 24 IS THE SITE LOGO */
 
 export default   function SiteChrome({
   children,

@@ -24,7 +24,7 @@ export default function SiteChrome({
                 >
                   frame it wright photography
                 </Link>
-                <span className="text-xs font-serif text-stone-400 lowercase tracking-wider mt-1">
+                <span className="text-xs font-serif text-stone-500 lowercase tracking-wider mt-1">
                   ~ an ode to slow living
                 </span>
               </div>

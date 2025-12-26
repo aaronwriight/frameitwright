@@ -15,9 +15,74 @@ export default function Guides({ guides }: { guides: SanityGuide[] }) {
     });
 
   return (
-    <main className="grid-cols-auto container mx-auto grid snap-proximity gap-8 px-6 py-11">
-      <p>scope for imagination</p> {/* blog */}
-      <p>test</p> {/* test */}
+    <main className="container mx-auto grid grid-cols-auto snap-proximity gap-1 px-6 py-11">
+
+    <br />
+    <br />
+    <br />
+
+    {/* portfolio */}
+
+    <div className="flex items-baseline gap-2">
+      <span className="font-serif text-sm lowercase tracking-widest">
+        portfolio
+      </span>
+      <span className="font-serif text-sm lowercase tracking-widest">|</span>
+      <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">
+        <i>hand-picked favorites</i>
+      </span>
+    </div>
+
+    {/* client galleries */}
+    {/* set up like SOI blog */}
+
+    <div className="flex items-baseline gap-2">
+      <span className="font-serif text-sm lowercase tracking-widest">
+        galleries
+      </span>
+      <span className="font-serif text-sm lowercase tracking-widest">|</span>
+      <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">
+        <i>minimal carousels</i> 
+      </span>
+    </div>
+
+    {/* scope for imagination blog */}
+    {/* set up like client galleries */}
+
+    <div className="flex items-baseline gap-2">
+      <span className="font-serif text-sm lowercase tracking-widest">
+        scope for imagination
+      </span>
+      <span className="font-serif text-sm lowercase tracking-widest">|</span>
+      <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">
+        <i>digital journal</i>
+      </span>
+    </div>
+
+    {/* sand dollar hunting */}
+
+    <div className="flex items-baseline gap-2">
+      <span className="font-serif text-sm lowercase tracking-widest">
+        sand dollar hunting
+      </span>
+      <span className="font-serif text-sm lowercase tracking-widest">|</span>
+      <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">
+        <i>coming soon...</i>
+      </span>
+    </div>
+
+    <br />
+    <br />
+
+    <p className="italic font-serif leading-relaxed text-sm text-center">
+      Well, that is one of the things to find out sometime. Isn't it splendid to
+      think of all the things there are to find out about? It just makes me feel
+      glad to be alive – it's such an interesting world. It wouldn't be half so
+      interesting if we know all about everything, would it? There'd be no scope
+      for imagination then, would there?
+      <br />
+      <span className="block italic font-serif leading-relaxed text-xs text-stone-400 text-right mr-30">– Anne of Green Gables, L. M. Montgomery</span>
+    </p>
 
       {groupedGuidesByYear.map((year) => {
         return (

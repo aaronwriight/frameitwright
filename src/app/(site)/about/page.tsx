@@ -22,17 +22,28 @@ export default function about() {
         </p>
       </div>
       <div>
-        <h2 className="m-0  text-sm  font-medium antialiased"><b>typography</b></h2>
+        <h2 className="m-0  text-sm  font-medium antialiased"><b>loc</b></h2>
         <p className="m-0 mt-2 text-sm  antialiased">
           Set in <Link href="https://vercel.com/font/sans">Geist Sans</Link> and{" "}
           <Link href="https://vercel.com/font/mono">Geist Mono</Link> by Vercel.
           It has nice proportions for small text, and the niceities of classic
           grotesques and some of the more humanist/softer touchers in modern
           sans.
+          
+          <br />
+          <br />
+          galleries |
+          <br />
+          portfolio |
+          <br />
+          scope for imagination |
+          <br />
+          sand dollar hunting |
+
         </p>
       </div>
       <div>
-        <h2 className="m-0  text-sm  font-medium antialiased"><b>hosting</b></h2>
+        <h2 className="m-0  text-sm  font-medium antialiased"><b>dev</b></h2>
         <p className="m-0 mt-2 text-sm  antialiased">
           Written in React via <Link href="https://nextjs.org">Next.js</Link>{" "}
           with <Link href="https://sanity.io">Sanity</Link> providing the CMS.
@@ -41,7 +52,7 @@ export default function about() {
           privacy focussed <Link href="https://plausible.io">Plausible</Link>
         </p>
         <p className="m-0 mt-2 text-sm antialiasted">
-          Forked on GitHub from <Link href="https://github.com/tbrasington/the-post-chaise-site">Thomas Brasington</Link>.
+          Forked from <Link href="https://github.com/tbrasington/the-post-chaise-site">Thomas Brasington</Link> on GitHub.
         </p>
       </div>
     </main>

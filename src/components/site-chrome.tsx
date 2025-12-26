@@ -19,7 +19,7 @@ export default function SiteChrome({
             <header className="container m-auto flex items-center justify-between gap-4 px-6 py-10 md:pt-20">
               <Link
                 href="/"
-                className="font-mono text-sm lowercase tracking-widest"
+                className="font-serif text-sm lowercase tracking-widest"
               >
                 frame it wright photography
               </Link>

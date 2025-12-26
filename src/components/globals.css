@@ -3,10 +3,29 @@
 
 @theme {
   --animation-spin-slow: spin 30s linear infinite;
+
+  /* set body and heading font to Perpetua */
+  --font-family-sans: "Perpetua", "Georgia", serif;
+
+  /* optional monospace for logo, code, or inline code */
+  --font-family-mono: monospace;
+
+  --aspect-ratio-16-9: 16 / 9;
+  --aspect-ratio-4-3: 4 / 3;
+
+  --bg-gradient-radial: radial-gradient(var(--tw-gradient-stops));
+  --bg-gradient-conic: conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops));
+}
+
+/* @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --animation-spin-slow: spin 30s linear infinite;
   --font-family-sans: var(--font-geist-sans);
   --font-family-mono: var(--font-geist-mono);
   --aspect-ratio-16-9: 16 / 9;
   --aspect-ratio-4-3: 4 / 3;
   --bg-gradient-radial: radial-gradient(var(--tw-gradient-stops));
   --bg-gradient-conic: conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops));
-}
+} */

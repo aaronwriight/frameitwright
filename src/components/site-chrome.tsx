@@ -16,13 +16,18 @@ export default function SiteChrome({
       <html lang="en" className="scroll-smooth">
         <body className="bg-stone min-h-screen font-serif text-sm dark:bg-stone-950 dark:text-stone-400">
           <div className="flex min-h-screen flex-col gap-4">
-            <header className="container m-auto flex items-center justify-between gap-4 px-6 py-10 md:pt-20">
-              <Link
-                href="/"
-                className="font-serif text-sm lowercase tracking-widest"
-              >
-                frame it wright photography
-              </Link>
+            <header className="container m-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-2 px-6 py-10 md:pt-20">
+              <div className="flex flex-col">
+                <Link
+                  href="/"
+                  className="font-serif text-sm lowercase tracking-widest"
+                >
+                  frame it wright photography
+                </Link>
+                <span className="text-xs font-serif text-stone-400 lowercase tracking-wider mt-1">
+                  ~ an ode to slow living
+                </span>
+              </div>
               <Logo />
             </header>
 

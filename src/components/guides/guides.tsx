@@ -74,14 +74,14 @@ export default function Guides({ guides }: { guides: SanityGuide[] }) {
     <br />
     <br />
 
-    <p className="italic font-serif leading-relaxed text-sm text-stone-500 text-center">
+    <p className="italic font-serif leading-relaxed text-sm text-center">
       Well, that is one of the things to find out sometime. Isn't it splendid to
       think of all the things there are to find out about? It just makes me feel
       glad to be alive – it's such an interesting world. It wouldn't be half so
       interesting if we know all about everything, would it? There'd be no scope
       for imagination then, would there?
       <br />
-      <span className="block italic font-serif leading-relaxed text-xs text-stone-400 text-right mr-30">– Anne of Green Gables, L. M. Montgomery</span>
+      <span className="block italic font-serif leading-relaxed text-xs text-stone-500 text-right mr-30">– Anne of Green Gables, L. M. Montgomery</span>
     </p>
 
       {groupedGuidesByYear.map((year) => {

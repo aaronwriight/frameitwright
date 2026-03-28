@@ -29,7 +29,7 @@ export default function Guides({ guides }: { guides: SanityGuide[] }) {
       </span>
       <span className="font-serif text-sm lowercase tracking-widest">|</span>
       <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">
-        <i>the social mind in dialogue: how the human brain processes languages and structures conversation</i>
+        <i>the social mind in dialogue</i>
       </span>
     </div>
 
@@ -37,7 +37,7 @@ export default function Guides({ guides }: { guides: SanityGuide[] }) {
 
     <div className="flex items-baseline gap-2">
       <span className="font-serif text-sm lowercase tracking-widest">
-        cognitive science
+        frame it wright photorgraphy
       </span>
       <span className="font-serif text-sm lowercase tracking-widest">|</span>
       <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">

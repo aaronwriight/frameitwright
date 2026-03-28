@@ -22,10 +22,10 @@ export default function SiteChrome({
                   href="/"
                   className="font-serif text-sm lowercase tracking-widest"
                 >
-                  frame it wright photography
+                  aaron wright
                 </Link>
                 <span className="text-xs font-serif text-stone-500 lowercase tracking-wider mt-1">
-                  ~ an ode to slow living
+                  ~ bio
                 </span>
               </div>
               <Logo />

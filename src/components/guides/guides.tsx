@@ -21,28 +21,27 @@ export default function Guides({ guides }: { guides: SanityGuide[] }) {
     <br />
     <br />
 
-    {/* portfolio */}
+    {/* cognitive science */}
 
     <div className="flex items-baseline gap-2">
       <span className="font-serif text-sm lowercase tracking-widest">
-        portfolio
+        cognitive science
       </span>
       <span className="font-serif text-sm lowercase tracking-widest">|</span>
       <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">
-        <i>hand-picked favorites</i>
+        <i>the social mind in dialogue: how the human brain processes languages and structures conversation</i>
       </span>
     </div>
 
-    {/* client galleries */}
-    {/* set up like SOI blog */}
+    {/* frame it wright photography */}
 
     <div className="flex items-baseline gap-2">
       <span className="font-serif text-sm lowercase tracking-widest">
-        galleries
+        cognitive science
       </span>
       <span className="font-serif text-sm lowercase tracking-widest">|</span>
       <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">
-        <i>minimal carousels</i> 
+        <i>an ode to slow living</i>
       </span>
     </div>
 
@@ -59,9 +58,47 @@ export default function Guides({ guides }: { guides: SanityGuide[] }) {
       </span>
     </div>
 
-    {/* sand dollar hunting */}
+
+    {/* portfolio */}
+
+    {/* <div className="flex items-baseline gap-2">
+      <span className="font-serif text-sm lowercase tracking-widest">
+        portfolio
+      </span>
+      <span className="font-serif text-sm lowercase tracking-widest">|</span>
+      <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">
+        <i>hand-picked favorites</i>
+      </span>
+    </div> */}
+
+    {/* client galleries */}
+    {/* set up like SOI blog */}
+
+    {/* <div className="flex items-baseline gap-2">
+      <span className="font-serif text-sm lowercase tracking-widest">
+        galleries
+      </span>
+      <span className="font-serif text-sm lowercase tracking-widest">|</span>
+      <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">
+        <i>minimal carousels</i> 
+      </span>
+    </div> */}
+
+    {/* literature */}
 
     <div className="flex items-baseline gap-2">
+      <span className="font-serif text-sm lowercase tracking-widest">
+        literature
+      </span>
+      <span className="font-serif text-sm lowercase tracking-widest">|</span>
+      <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">
+        <i>coming soon...</i>
+      </span>
+    </div>
+
+    {/* sand dollar hunting */}
+
+    {/* <div className="flex items-baseline gap-2">
       <span className="font-serif text-sm lowercase tracking-widest">
         sand dollar hunting
       </span>
@@ -69,7 +106,7 @@ export default function Guides({ guides }: { guides: SanityGuide[] }) {
       <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">
         <i>coming soon...</i>
       </span>
-    </div>
+    </div> */}
  
     <br />
     <br />

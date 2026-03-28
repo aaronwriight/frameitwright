@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "frame it wright photography",
+  title: "aaron wright", /* top left corner */
   description: "an ode to slow living",
   metadataBase: new URL(`https://${process.env.VERCEL_URL}`),
   openGraph: {
@@ -18,18 +18,13 @@ export default function about() {
       <div>
         <h2 className="m-0  text-sm  font-medium antialiased"><b>bio</b></h2>
         <p className="m-0 mt-2 text-sm  antialiased">
-          A journal by <Link href="https://aaronwriight.github.io">Aaron Wright</Link>. A 2025 iteration of a 2020 concept – something to keep my life in science balanced.
+          A creative endeavor by <Link href="https://aaronwriight.github.io">Aaron Wright</Link>.
         </p>
       </div>
       <div>
-        <h2 className="m-0  text-sm  font-medium antialiased"><b>loc</b></h2>
+        <h2 className="m-0  text-sm  font-medium antialiased"><b>nav</b></h2>
         <p className="m-0 mt-2 text-sm  antialiased">
-          Set in <Link href="https://vercel.com/font/sans">Geist Sans</Link> and{" "}
-          <Link href="https://vercel.com/font/mono">Geist Mono</Link> by Vercel.
-          It has nice proportions for small text, and the niceities of classic
-          grotesques and some of the more humanist/softer touchers in modern
-          sans.
-          
+
           <br />
           <br />
           galleries |

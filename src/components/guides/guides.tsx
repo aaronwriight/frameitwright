@@ -58,15 +58,15 @@ export default function Guides({ guides }: { guides: SanityGuide[] }) {
       </span>
     </div>
 
-    {/* contact */}
+    {/* personal */}
 
     <div className="flex items-baseline gap-2">
       <span className="font-serif text-sm lowercase tracking-widest">
-        contact
+        personal
       </span>
       <span className="font-serif text-sm lowercase tracking-widest">|</span>
       <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">
-        <i>get in touch!</i>
+        <i>about me</i>
       </span>
     </div>
 

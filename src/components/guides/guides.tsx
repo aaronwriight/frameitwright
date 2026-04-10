@@ -33,6 +33,18 @@ export default function Guides({ guides }: { guides: SanityGuide[] }) {
       </span>
     </div>
 
+    {/* cogSuite */}
+
+    {/* <div className="flex items-baseline gap-2">
+      <span className="font-serif text-sm lowercase tracking-widest">
+        cogSuite
+      </span>
+      <span className="font-serif text-sm lowercase tracking-widest">|</span>
+      <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">
+        <i>minimal demos</i>
+      </span>
+    </div> */}
+
     {/* frame it wright photography */}
 
     <div className="flex items-baseline gap-2">
@@ -104,6 +116,18 @@ export default function Guides({ guides }: { guides: SanityGuide[] }) {
       <span className="font-serif text-sm lowercase tracking-widest">|</span>
       <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">
         <i>about me</i>
+      </span>
+    </div>
+
+    {/* contact */}
+
+    <div className="flex items-baseline gap-2">
+      <span className="font-serif text-sm lowercase tracking-widest">
+        contact
+      </span>
+      <span className="font-serif text-sm lowercase tracking-widest">|</span>
+      <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">
+        <i>coming soon...</i>
       </span>
     </div>
 

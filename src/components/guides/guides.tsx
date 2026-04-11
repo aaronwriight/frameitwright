@@ -125,10 +125,10 @@ export default function Guides({ guides }: { guides: SanityGuide[] }) {
       <span className="font-serif text-sm lowercase tracking-widest">
         contact
       </span>
-      <span className="font-serif text-sm lowercase tracking-widest">|</span>
+      {/* <span className="font-serif text-sm lowercase tracking-widest">|</span>
       <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">
         <i>coming soon...</i>
-      </span>
+      </span> */}
     </div>
 
     {/* sand dollar hunting */}

@@ -1,7 +1,8 @@
-// page.jsx
-export const metadata = {
+import type { Metadata } from "next";
+export const metadata: Metadata = {
   title: "research",
   description: "research page for cognitive science module",
+  metadataBase: new URL(`https://${process.env.VERCEL_URL}`)
 };
 
 export default function Page() {

@@ -12,7 +12,7 @@ export default function SiteChrome({
   children: React.ReactNode;
 }>) {
   return (
-    <PlausibleProvider domain="http://frameitwrightphotography.vercel.app">
+    <PlausibleProvider domain="http://aaronwriight.vercel.app">
       <html lang="en" className="scroll-smooth">
         <body className="bg-stone min-h-screen font-serif text-sm dark:bg-stone-950 dark:text-stone-400">
           <div className="flex min-h-screen flex-col gap-4">

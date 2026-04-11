@@ -1,7 +1,7 @@
 // page.jsx
 export const metadata = {
-  title: "research",
-  description: "research page for cognitive science module",
+  title: "personal",
+  description: "research page for personal module",
 };
 
 export default function Page() {

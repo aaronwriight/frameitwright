@@ -1,7 +1,8 @@
 // ./components/Posts.tsx
 
-import { SanityGuide, GuideIndexList } from "@/sanity/types/guides";
+import { SanityGuide } from "@/sanity/types/guides";
 import { GuideThumbnail } from "./thumbnail";
+import { SiteMenu } from "@/components/site/site-content";
 
 export default function Guides({ guides }: { guides: SanityGuide[] }) {
   const dates = guides.map((item) => item.date_of_guide.split("-")[0]);
@@ -15,153 +16,14 @@ export default function Guides({ guides }: { guides: SanityGuide[] }) {
     });
 
   return (
-    <main className="container mx-auto grid grid-cols-auto snap-proximity gap-1 px-6 py-11">
-
-    <br />
-    <br />
-    <br />
-
-    {/* cognitive science */}
-
-    <div className="flex items-baseline gap-2">
-      <span className="font-serif text-sm lowercase tracking-widest">
-        cognitive science
-      </span>
-      <span className="font-serif text-sm lowercase tracking-widest">|</span>
-      <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">
-        <i>the social mind in dialogue</i>
-      </span>
-    </div>
-
-    {/* cogSuite */}
-
-    {/* <div className="flex items-baseline gap-2">
-      <span className="font-serif text-sm lowercase tracking-widest">
-        cogSuite
-      </span>
-      <span className="font-serif text-sm lowercase tracking-widest">|</span>
-      <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">
-        <i>minimal demos</i>
-      </span>
-    </div> */}
-
-    {/* frame it wright photography */}
-
-    <div className="flex items-baseline gap-2">
-      <span className="font-serif text-sm lowercase tracking-widest">
-        frame it wright photorgraphy
-      </span>
-      <span className="font-serif text-sm lowercase tracking-widest">|</span>
-      <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">
-        <i>an ode to slow living</i>
-      </span>
-    </div>
-
-    {/* scope for imagination blog */}
-    {/* set up like client galleries */}
-
-    <div className="flex items-baseline gap-2">
-      <span className="font-serif text-sm lowercase tracking-widest">
-        scope for imagination
-      </span>
-      <span className="font-serif text-sm lowercase tracking-widest">|</span>
-      <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">
-        <i>digital journal</i>
-      </span>
-    </div>
-
-    {/* portfolio */}
-
-    {/* <div className="flex items-baseline gap-2">
-      <span className="font-serif text-sm lowercase tracking-widest">
-        portfolio
-      </span>
-      <span className="font-serif text-sm lowercase tracking-widest">|</span>
-      <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">
-        <i>hand-picked favorites</i>
-      </span>
-    </div> */}
-
-    {/* client galleries */}
-    {/* set up like SOI blog */}
-
-    {/* <div className="flex items-baseline gap-2">
-      <span className="font-serif text-sm lowercase tracking-widest">
-        galleries
-      </span>
-      <span className="font-serif text-sm lowercase tracking-widest">|</span>
-      <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">
-        <i>minimal carousels</i> 
-      </span>
-    </div> */}
-
-    {/* literature */}
-
-    <div className="flex items-baseline gap-2">
-      <span className="font-serif text-sm lowercase tracking-widest">
-        literature
-      </span>
-      <span className="font-serif text-sm lowercase tracking-widest">|</span>
-      <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">
-        <i>coming soon...</i>
-      </span>
-    </div>
-
-    {/* personal */}
-
-    <div className="flex items-baseline gap-2">
-      <span className="font-serif text-sm lowercase tracking-widest">
-        personal
-      </span>
-      <span className="font-serif text-sm lowercase tracking-widest">|</span>
-      <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">
-        <i>about me</i>
-      </span>
-    </div>
-
-    {/* contact */}
-
-    <div className="flex items-baseline gap-2">
-      <span className="font-serif text-sm lowercase tracking-widest">
-        contact
-      </span>
-      {/* <span className="font-serif text-sm lowercase tracking-widest">|</span>
-      <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">
-        <i>coming soon...</i>
-      </span> */}
-    </div>
-
-    {/* sand dollar hunting */}
-
-    {/* <div className="flex items-baseline gap-2">
-      <span className="font-serif text-sm lowercase tracking-widest">
-        sand dollar hunting
-      </span>
-      <span className="font-serif text-sm lowercase tracking-widest">|</span>
-      <span className="font-serif text-xs text-stone-500 lowercase tracking-wider">
-        <i>coming soon...</i>
-      </span>
-    </div> */}
- 
-    <br />
-    <br />
-
-    <p className="italic font-serif leading-relaxed text-sm text-right">
-      Well, that is one of the things to find out sometime.
-      <br />
-      Isn't it splendid to think of all the things there are to find out about?
-      <br />
-      It just makes me feel glad to be alive – it's such an interesting world. 
-      <br />
-      It wouldn't be half so interesting if we know all about everything, would it?
-      <br />
-      There'd be no <b>scope for imagination</b> then, would there?
-      <br />
-      <br />
-      <span className="block italic font-serif leading-relaxed text-xs text-stone-500 text-right mr-10">– Anne of Green Gables, L. M. Montgomery</span>
-    </p>
-
-      {groupedGuidesByYear.map((year) => {
+    <main className="container relative mx-auto flex-1 px-6 py-11">
+      <div
+        className="grid items-start gap-y-8"
+        style={{ columnGap: "4rem", gridTemplateColumns: "13rem minmax(0, 1fr)" }}
+      >
+        <SiteMenu />
+        <section className="w-full self-start space-y-8 text-left">
+          {groupedGuidesByYear.map((year) => {
         return (
           <div
             key={`year-${year.year}`}
@@ -189,6 +51,24 @@ export default function Guides({ guides }: { guides: SanityGuide[] }) {
           </div>
         );
       })}
+        </section>
+      </div>
+      <p className="absolute -bottom-16 right-6 max-w-3xl italic font-serif leading-relaxed text-sm text-right">
+        Well, that is one of the things to find out sometime.
+        <br />
+        Isn&apos;t it splendid to think of all the things there are to find out about?
+        <br />
+        It just makes me feel glad to be alive - it&apos;s such an interesting world.
+        <br />
+        It wouldn&apos;t be half so interesting if we know all about everything, would it?
+        <br />
+        There&apos;d be no <b>scope for imagination</b> then, would there?
+        <br />
+        <br />
+        <span className="block italic font-serif leading-relaxed text-xs text-stone-500 text-right">
+          - Anne of Green Gables, L. M. Montgomery
+        </span>
+      </p>
     </main>
   );
 }

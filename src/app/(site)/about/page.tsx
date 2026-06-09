@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { SitePageShell } from "@/components/site/site-content";
 export const metadata: Metadata = {
   title: "aaron wright", /* top left corner */
   description: "an ode to slow living",
@@ -12,9 +13,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function about() {
+export default function AboutPage() {
   return (
-    <main className="prose prose-stone dark:prose-invert prose-base container mx-auto  flex-1 space-y-7 px-6 py-11">
+    <SitePageShell title="about">
       <div>
         <h2 className="m-0  text-sm  font-medium antialiased"><b>bio</b></h2>
         <p className="m-0 mt-2 text-sm  antialiased">
@@ -50,6 +51,6 @@ export default function about() {
           Forked from <Link href="https://github.com/tbrasington/the-post-chaise-site">Thomas Brasington</Link> on GitHub.
         </p>
       </div>
-    </main>
+    </SitePageShell>
   );
 }

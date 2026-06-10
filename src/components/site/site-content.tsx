@@ -2,8 +2,8 @@ import Link from "next/link";
 
 const siteLinks = [
   ["cognitive science", "/cognitive-science"],
-  ["frame it wright photography", "/frame-it-wright-photography"],
-  ["scope for imagination", "/scope-for-imagination"],
+  ["photography", "/frame-it-wright-photography"],
+  ["journal", "/scope-for-imagination"],
   ["literature", "/literature"],
   ["personal", "/personal"],
   ["contact", "/contact"],
@@ -38,9 +38,6 @@ export function SitePageShell({
 export function SiteMenu() {
   return (
     <aside className="space-y-5">
-      <Link href="/" className="block lowercase tracking-widest">
-        home
-      </Link>
       <nav className="flex flex-col items-start gap-1 text-xs lowercase tracking-wider text-stone-500">
         {siteLinks.map(([label, href]) => (
           <Link key={href} href={href} className="whitespace-nowrap hover:text-stone-900 dark:hover:text-stone-200">
@@ -48,6 +45,12 @@ export function SiteMenu() {
           </Link>
         ))}
       </nav>
+      <Link
+        href="/"
+        className="inline-flex border border-stone-300 px-2 py-1 text-xs lowercase tracking-widest text-stone-500 hover:border-stone-500 hover:text-stone-900 dark:border-stone-700 dark:hover:border-stone-500 dark:hover:text-stone-200"
+      >
+        home
+      </Link>
     </aside>
   );
 }

@@ -18,14 +18,11 @@ export default function SiteChrome({
           <div className="flex min-h-screen flex-col gap-4">
             <header className="container m-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-2 px-6 py-10 md:pt-20">
               <div className="flex flex-col">
-                <Link
-                  href="/"
-                  className="font-serif text-sm lowercase tracking-widest"
-                >
+                <span className="font-serif text-sm lowercase tracking-widest">
                   aaron wright
-                </Link>
+                </span>
                 <span className="text-xs font-serif text-stone-500 lowercase tracking-wider mt-1">
-                  ~ bio
+                  cognitive scientist
                 </span>
               </div>
               <Logo />
@@ -35,7 +32,7 @@ export default function SiteChrome({
 
             <footer className="container mx-auto flex px-6 justify-between gap-4 py-20 text-stone-500">
               <Link href="/about" className="text-stone-500">
-                about
+                wiki
               </Link>{" "}
               <span>© {new Date().getFullYear()} Aaron Wright</span>
             </footer>

@@ -41,6 +41,12 @@ export function ScienceShell({
               </Link>
             ))}
           </nav>
+          <Link
+            href="/"
+            className="inline-flex border border-stone-300 px-2 py-1 text-xs lowercase tracking-widest text-stone-500 hover:border-stone-500 hover:text-stone-900 dark:border-stone-700 dark:hover:border-stone-500 dark:hover:text-stone-200"
+          >
+            home
+          </Link>
         </aside>
 
         <article

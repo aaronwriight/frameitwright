@@ -2,11 +2,11 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { SitePageShell } from "@/components/site/site-content";
 export const metadata: Metadata = {
-  title: "aaron wright", /* top left corner */
+  title: "wiki", /* top left corner */
   description: "an ode to slow living",
   metadataBase: new URL(`https://${process.env.VERCEL_URL}`),
   openGraph: {
-    title: "frame it wright photography",
+    title: "aaron wright",
     description: "an ode to slow living",
     images: ["/images/sand_dollar.png"],
     authors: ["https://aaronwriight.github.io"],
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <SitePageShell title="about">
+    <SitePageShell title="wiki">
       <div>
         <h2 className="m-0  text-sm  font-medium antialiased"><b>bio</b></h2>
         <p className="m-0 mt-2 text-sm  antialiased">
@@ -25,17 +25,17 @@ export default function AboutPage() {
       <div>
         <h2 className="m-0  text-sm  font-medium antialiased"><b>nav</b></h2>
         <p className="m-0 mt-2 text-sm  antialiased">
-
+          <Link href="/cognitive-science">cognitive science</Link> |
           <br />
+          <Link href="/frame-it-wright-photography">photography</Link> |
           <br />
-          galleries |
+          <Link href="/scope-for-imagination">journal</Link> |
           <br />
-          portfolio |
+          <Link href="/literature">literature</Link> |
           <br />
-          scope for imagination |
+          <Link href="/personal">personal</Link> |
           <br />
-          sand dollar hunting |
-
+          <Link href="/contact">contact</Link>
         </p>
       </div>
       <div>

@@ -3,11 +3,11 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import SiteChrome from "@/components/site-chrome";
 export const metadata: Metadata = {
-  title: "Page not found | frame it wright photography",
+  title: "Page not found | aaron wright",
   description: "",
   metadataBase: new URL(`https://${process.env.VERCEL_URL}`),
   openGraph: {
-    title: "404 | frame it wright photography",
+    title: "404 | aaron wright",
     description: "",
     images: ["/images/sand_dollar.png"], 
     authors: ["https://aaronwriight.github.io"],

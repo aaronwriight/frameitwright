@@ -10,7 +10,8 @@ export default function TidyTuesdayProjectPage() {
   return (
     <ScienceShell title="tidy tuesday">
       <p>
-        <ExternalLink href="https://aaronwriight.github.io/tidy_tuesday/">open tidy tuesday</ExternalLink>
+        coming soon
+        {/* <ExternalLink href="https://aaronwriight.github.io/tidy_tuesday/">open tidy tuesday</ExternalLink> */}
       </p>
     </ScienceShell>
   );

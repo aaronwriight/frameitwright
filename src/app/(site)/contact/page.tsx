@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <ContactShell title="contact">
+    <ContactShell title="contact" showTitle={false}>
       <div className="not-prose flex flex-col gap-8 sm:flex-row sm:items-center sm:gap-10">
         <Image
           src="/images/pfp/pfp6_2025_mit_sq.jpg"
@@ -21,9 +21,9 @@ export default function ContactPage() {
           className="h-36 w-36 rounded-sm object-cover"
           priority
         />
-        <div className="min-w-0 leading-relaxed">
+        <div className="min-w-0 leading-relaxed sm:-translate-y-1">
           <p className="m-0 font-serif text-sm lowercase tracking-widest">aaron wright</p>
-          <p className="m-0 mt-1 text-xs text-stone-500">
+          <p className="m-0 mt-2 text-xs text-stone-500">
             Post-Baccalaureate Research Scholar @ MIT Brain & Cognitive Sciences {"{EvLab}"} 🧠
           </p>
           <p className="m-0 mt-4 text-xs lowercase tracking-wider text-stone-500">

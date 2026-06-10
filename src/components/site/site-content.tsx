@@ -32,6 +32,9 @@ const sectionLinks = {
   contact: [
     ["home", "/"],
   ],
+  wiki: [
+    ["home", "/"],
+  ],
 };
 
 export function SitePageShell({
@@ -63,6 +66,9 @@ export function SitePageShell({
 export function SiteMenu() {
   return (
     <aside className="space-y-5">
+      <span className="block lowercase tracking-widest">
+        home
+      </span>
       <nav className="flex flex-col items-start gap-1 text-xs lowercase tracking-wider text-stone-500">
         {siteLinks.map(([label, href]) => (
           <Link key={href} href={href} className="whitespace-nowrap hover:text-stone-900 dark:hover:text-stone-200">
@@ -101,11 +107,13 @@ export function SectionPageShell({
   section,
   links,
   title,
+  showTitle = true,
   children,
 }: {
   section: string;
   links: string[][];
   title: string;
+  showTitle?: boolean;
   children: React.ReactNode;
 }) {
   return (
@@ -119,8 +127,8 @@ export function SectionPageShell({
           className="prose prose-stone w-full max-w-none self-start text-left text-sm dark:prose-invert prose-headings:font-serif prose-headings:lowercase prose-a:text-[#6f8200] prose-h2:text-sm prose-h2:font-medium prose-h2:tracking-normal prose-h2:normal-case"
           style={{ maxWidth: "56rem" }}
         >
-          <h1 className="m-0 text-base font-medium lowercase tracking-widest">{title}</h1>
-          <div className="mt-3 space-y-5">{children}</div>
+          {showTitle && <h1 className="m-0 text-base font-medium lowercase tracking-widest">{title}</h1>}
+          <div className={showTitle ? "mt-3 space-y-5" : "space-y-5"}>{children}</div>
         </article>
       </div>
     </main>
@@ -185,13 +193,29 @@ export function PersonalShell({
 
 export function ContactShell({
   title,
+  showTitle,
+  children,
+}: {
+  title: string;
+  showTitle?: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <SectionPageShell section="contact" links={sectionLinks.contact} title={title} showTitle={showTitle}>
+      {children}
+    </SectionPageShell>
+  );
+}
+
+export function WikiShell({
+  title,
   children,
 }: {
   title: string;
   children: React.ReactNode;
 }) {
   return (
-    <SectionPageShell section="contact" links={sectionLinks.contact} title={title}>
+    <SectionPageShell section="wiki" links={sectionLinks.wiki} title={title}>
       {children}
     </SectionPageShell>
   );

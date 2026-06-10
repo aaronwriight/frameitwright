@@ -21,7 +21,7 @@ export default function ContactPage() {
           className="h-36 w-36 rounded-sm object-cover"
           priority
         />
-        <div className="min-w-0 space-y-2 leading-relaxed sm:-translate-y-1">
+        <div className="min-w-0 space-y-3 leading-relaxed sm:-translate-y-1">
           <p className="m-0 font-serif text-sm lowercase tracking-widest">aaron wright</p>
           <p className="m-0 text-xs text-stone-500">
             Post-Baccalaureate Research Scholar @ MIT Brain & Cognitive Sciences {"{EvLab}"} 🧠

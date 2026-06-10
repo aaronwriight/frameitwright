@@ -20,7 +20,7 @@ export default function CognitiveScienceAboutPage() {
         wisdom and prompting as it is formed around my own desire to mentor future scholars.
       </p>
       <ul>
-        <li>
+        {/* <li>
           Beginning in the Fall, I will join the{" "}
           <Link href="https://fpetzschner.com/lab/">Psychiatry, Embodiment and Computation (PEAC) Lab</Link>, within the Department of{" "}
           <Link href="https://copsy.brown.edu">Cognitive and Psychological Sciences</Link> and{" "}
@@ -28,7 +28,7 @@ export default function CognitiveScienceAboutPage() {
           <Link href="https://fpetzschner.com/about/">Frederike Petzschner</Link> and her team to study embodied intelligence –– how brain-body
           interactions shape learning, emotion, and psychiatric vulnerability –– using computational modeling, neuroimagining (EEG, fMRI), and
           behavioral methods.
-        </li>
+        </li> */}
         <li>
           Currently, I&apos;m &quot;<em>discovering how minds and brains create language</em>&quot; as a{" "}
           <Link href="https://bcs.mit.edu/postbac1">post-baccalaureate research assistant</Link> in{" "}

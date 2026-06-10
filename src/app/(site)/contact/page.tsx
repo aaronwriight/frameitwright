@@ -23,9 +23,11 @@ export default function ContactPage() {
         />
         <div className="min-w-0 space-y-3 leading-relaxed sm:-translate-y-1">
           <p className="m-0 font-serif text-sm lowercase tracking-widest">aaron wright</p>
+          <br></br>
           <p className="m-0 text-xs text-stone-500">
             Post-Baccalaureate Research Scholar @ MIT Brain & Cognitive Sciences {"{EvLab}"} 🧠
           </p>
+          <br></br>
           <p className="m-0 text-xs lowercase tracking-wider text-stone-500">
             cambridge, ma |{" "}
             <Link href="https://bcs.mit.edu" className="text-[#6f8200]">mit</Link>{" "}
@@ -36,6 +38,7 @@ export default function ContactPage() {
             <Link href="https://www.linkedin.com/in/aaron-wriight" className="text-[#6f8200]">linkedin</Link>{" "}
             <Link href="https://bsky.app/profile/aaronwriight.bsky.social" className="text-[#6f8200]">bluesky</Link>
           </p>
+          <br></br>
           <p className="m-0 text-xs lowercase tracking-wider text-stone-500">
             <Link href="/files/cv/WrightAaron_cv_2026_current.pdf" target="_blank" rel="noopener noreferrer" className="text-[#6f8200]">
               cv

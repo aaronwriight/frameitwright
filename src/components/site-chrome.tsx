@@ -22,7 +22,7 @@ export default function SiteChrome({
                   aaron wright
                 </span>
                 <span className="text-xs font-serif text-stone-500 lowercase tracking-wider mt-1">
-                  cognitive scientist
+                  cognitive scientist, artist
                 </span>
               </div>
               <Logo />

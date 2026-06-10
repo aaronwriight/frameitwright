@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import { PhotographyShell } from "@/components/site/site-content";
 
 export const metadata: Metadata = {
-  title: "frame it wright photography",
-  description: "Frame It Wright Photography",
+  title: "photography gallery",
+  description: "Photography gallery by Aaron Wright",
 };
 
-export default function FrameItWrightPhotographyPage() {
+export default function PhotographyGalleryPage() {
   return (
-    <PhotographyShell title="frame it wright photography">
+    <PhotographyShell title="gallery">
       <p className="text-stone-500">coming soon</p>
     </PhotographyShell>
   );

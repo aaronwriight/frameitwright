@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ComingSoonPage } from "@/components/site/site-content";
+import { JournalShell } from "@/components/site/site-content";
 
 export const metadata: Metadata = {
   title: "scope for imagination",
@@ -7,5 +7,9 @@ export const metadata: Metadata = {
 };
 
 export default function ScopeForImaginationPage() {
-  return <ComingSoonPage title="scope for imagination" />;
+  return (
+    <JournalShell title="scope for imagination">
+      <p className="text-stone-500">coming soon</p>
+    </JournalShell>
+  );
 }

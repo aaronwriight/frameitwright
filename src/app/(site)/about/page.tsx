@@ -24,19 +24,33 @@ export default function AboutPage() {
       </div>
       <div>
         <h2 className="m-0  text-sm  font-medium antialiased"><b>nav</b></h2>
-        <p className="m-0 mt-2 text-sm  antialiased">
-          <Link href="/cognitive-science">cognitive science</Link> |
-          <br />
-          <Link href="/frame-it-wright-photography">photography</Link> |
-          <br />
-          <Link href="/scope-for-imagination">journal</Link> |
-          <br />
-          <Link href="/literature">literature</Link> |
-          <br />
-          <Link href="/personal">personal</Link> |
-          <br />
-          <Link href="/contact">contact</Link>
-        </p>
+        <pre className="m-0 mt-2 whitespace-pre-wrap bg-transparent p-0 font-serif text-sm leading-6 antialiased">
+{`home
+├─ cognitive science
+│  ├─ overview
+│  ├─ about
+│  ├─ mentorship
+│  ├─ publications
+│  ├─ projects
+│  │  ├─ extended language network
+│  │  └─ tidy tuesday
+│  ├─ readings & resources
+│  └─ cv
+├─ photography
+│  ├─ about
+│  └─ gallery
+├─ journal
+│  └─ about
+├─ literature
+│  ├─ about
+│  ├─ shared agency
+│  └─ sand dollar hunting
+├─ personal
+│  └─ about
+├─ contact
+│  └─ about
+└─ wiki`}
+        </pre>
       </div>
       <div>
         <h2 className="m-0  text-sm  font-medium antialiased"><b>dev</b></h2>

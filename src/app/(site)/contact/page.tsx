@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { SitePageShell } from "@/components/site/site-content";
+import { ContactShell } from "@/components/site/site-content";
 
 export const metadata: Metadata = {
   title: "contact",
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <SitePageShell title="contact">
+    <ContactShell title="contact">
       <div className="not-prose flex flex-col gap-8 sm:flex-row sm:items-center sm:gap-10">
         <Image
           src="/images/pfp/pfp6_2025_mit_sq.jpg"
@@ -31,6 +31,7 @@ export default function ContactPage() {
             <Link href="https://bcs.mit.edu" className="text-[#6f8200]">mit</Link>{" "}
             <Link href="https://www.evlab.mit.edu" className="text-[#6f8200]">evlab</Link>{" "}
             <Link href="https://scholar.google.com/citations?user=2b1N4FcAAAAJ&hl=en" className="text-[#6f8200]">google scholar</Link>{" "}
+            <Link href="/files/cv/WrightAaron_cv_2026_current.pdf" target="_blank" rel="noopener noreferrer" className="text-[#6f8200]">cv</Link>{" "}
             <Link href="https://orcid.org/0009-0003-2532-2866" className="text-[#6f8200]">orcid</Link>{" "}
             <Link href="https://github.com/aaronwriight" className="text-[#6f8200]">github</Link>{" "}
             <Link href="https://www.linkedin.com/in/aaron-wriight" className="text-[#6f8200]">linkedin</Link>{" "}
@@ -66,6 +67,6 @@ export default function ContactPage() {
       </ul>
 
       <p>Looking forward to connecting!</p>
-    </SitePageShell>
+    </ContactShell>
   );
 }

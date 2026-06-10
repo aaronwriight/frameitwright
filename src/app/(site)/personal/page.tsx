@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SitePageShell } from "@/components/site/site-content";
+import { PersonalShell } from "@/components/site/site-content";
 export const metadata: Metadata = {
   title: "personal",
   description: "favorite stories, communities, and inspirations",
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function PersonalPage() {
   return (
-    <SitePageShell title="personal">
+    <PersonalShell title="personal">
       <p>
         <strong>
           I <em>love</em> a good story.
@@ -89,6 +89,6 @@ export default function PersonalPage() {
           </li>
         </ul>
       </details>
-    </SitePageShell>
+    </PersonalShell>
   );
 }

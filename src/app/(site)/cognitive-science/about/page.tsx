@@ -24,7 +24,7 @@ export default function CognitiveScienceAboutPage() {
           Beginning in the Fall, I will join the{" "}
           <Link href="https://fpetzschner.com/lab/">Psychiatry, Embodiment and Computation (PEAC) Lab</Link>, within the Department of{" "}
           <Link href="https://copsy.brown.edu">Cognitive and Psychological Sciences</Link> and{" "}
-          <Link href="https://carney.brown.edu">Carney Institute for Brain Science</Link> Brown. I&apos;m thrilled to be work with{" "}
+          <Link href="https://carney.brown.edu">Carney Institute for Brain Science</Link> at Brown. I&apos;m thrilled to work with{" "}
           <Link href="https://fpetzschner.com/about/">Frederike Petzschner</Link> and her team to study embodied intelligence –– how brain-body
           interactions shape learning, emotion, and psychiatric vulnerability –– using computational modeling, neuroimagining (EEG, fMRI), and
           behavioral methods.

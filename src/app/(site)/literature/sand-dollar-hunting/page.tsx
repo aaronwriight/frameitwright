@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import { LiteratureShell } from "@/components/site/site-content";
 
 export const metadata: Metadata = {
-  title: "literature",
-  description: "Literature",
+  title: "sand dollar hunting",
+  description: "Sand dollar hunting writing by Aaron Wright",
 };
 
-export default function LiteraturePage() {
+export default function SandDollarHuntingPage() {
   return (
-    <LiteratureShell title="literature">
+    <LiteratureShell title="sand dollar hunting">
       <p className="text-stone-500">coming soon</p>
     </LiteratureShell>
   );

@@ -34,7 +34,8 @@ export default function CognitiveScienceAboutPage() {
           <Link href="https://bcs.mit.edu/postbac1">post-baccalaureate research assistant</Link> in{" "}
           <Link href="https://www.evlab.mit.edu/about-ev">Evelina Fedorenko&apos;s</Link> language lab at MIT. I&apos;ve been working with{" "}
           <Link href="https://x.com/agata_wolna">Agata Wolna</Link>, using fMRI and other techniques to explore the neural signatures of language
-          processing, including the broader language network and how monolinguals and bilinguals differ in production and comprehension.
+          processing, including the broader language network and how monolinguals and bilinguals differ in production and comprehension. I&apos;m also
+          happy to chat about <Link href="https://bcs.mit.edu/postbac1">MIT&apos;s post-bacc program</Link>.
           <ul>
             <li>
               Simultaneously, I&apos;ve been in collaboration with <Link href="https://yiyangteoh.com">Yi Yang Teoh</Link> in{" "}

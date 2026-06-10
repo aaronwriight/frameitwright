@@ -21,12 +21,12 @@ export default function ContactPage() {
           className="h-36 w-36 rounded-sm object-cover"
           priority
         />
-        <div className="min-w-0 leading-relaxed sm:-translate-y-1">
+        <div className="min-w-0 space-y-2 leading-relaxed sm:-translate-y-1">
           <p className="m-0 font-serif text-sm lowercase tracking-widest">aaron wright</p>
-          <p className="m-0 mt-2 text-xs text-stone-500">
+          <p className="m-0 text-xs text-stone-500">
             Post-Baccalaureate Research Scholar @ MIT Brain & Cognitive Sciences {"{EvLab}"} 🧠
           </p>
-          <p className="m-0 mt-4 text-xs lowercase tracking-wider text-stone-500">
+          <p className="m-0 text-xs lowercase tracking-wider text-stone-500">
             cambridge, ma |{" "}
             <Link href="https://bcs.mit.edu" className="text-[#6f8200]">mit</Link>{" "}
             <Link href="https://www.evlab.mit.edu" className="text-[#6f8200]">evlab</Link>{" "}
@@ -36,7 +36,7 @@ export default function ContactPage() {
             <Link href="https://www.linkedin.com/in/aaron-wriight" className="text-[#6f8200]">linkedin</Link>{" "}
             <Link href="https://bsky.app/profile/aaronwriight.bsky.social" className="text-[#6f8200]">bluesky</Link>
           </p>
-          <p className="m-0 mt-2 text-xs lowercase tracking-wider text-stone-500">
+          <p className="m-0 text-xs lowercase tracking-wider text-stone-500">
             <Link href="/files/cv/WrightAaron_cv_2026_current.pdf" target="_blank" rel="noopener noreferrer" className="text-[#6f8200]">
               cv
             </Link>
@@ -45,8 +45,8 @@ export default function ContactPage() {
       </div>
 
       <p>
-        You can learn more about me and the work I do in a variety of places on this site or elsewhere. Feel free to reach out about{" "}
-        <Link href="https://bcs.mit.edu/postbac1">MIT&apos;s post-bacc program</Link>, about my research, or just to have a chat.
+        You can learn more about me and the work I do in a variety of places on this site or elsewhere. Feel free to reach out about my communities,
+        about my research, or just to have a chat!
       </p>
 
       <ul>
@@ -66,7 +66,7 @@ export default function ContactPage() {
           <strong>
             <em>alternatively</em>
           </strong>{" "}
-          : <Link href="https://www.buymeacoffee.com/aaronwriight">buy me a coffee</Link>
+          : <Link href="https://www.buymeacoffee.com/aaronwriight">buy me a coffee ;)</Link>
         </li>
       </ul>
 

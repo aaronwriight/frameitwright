@@ -25,8 +25,8 @@ export default function AboutPage() {
       <div>
         <h2 className="m-0  text-sm  font-medium antialiased"><b>nav</b></h2>
         <p className="m-0 mt-2 text-sm antialiased">
-          This site gathers a few threads of my life in cognitive science, mentorship, creative interests, writing, photography, and the things I am
-          still learning how to name.
+          This site gathers a few threads of my life, from cognitive science, mentorship, creative interests, writing, and photography, to all the
+          little things that broaden my scope for imagination. I hope you enjoy!
         </p>
       </div>
       <div>

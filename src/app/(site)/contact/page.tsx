@@ -31,11 +31,15 @@ export default function ContactPage() {
             <Link href="https://bcs.mit.edu" className="text-[#6f8200]">mit</Link>{" "}
             <Link href="https://www.evlab.mit.edu" className="text-[#6f8200]">evlab</Link>{" "}
             <Link href="https://scholar.google.com/citations?user=2b1N4FcAAAAJ&hl=en" className="text-[#6f8200]">google scholar</Link>{" "}
-            <Link href="/files/cv/WrightAaron_cv_2026_current.pdf" target="_blank" rel="noopener noreferrer" className="text-[#6f8200]">cv</Link>{" "}
             <Link href="https://orcid.org/0009-0003-2532-2866" className="text-[#6f8200]">orcid</Link>{" "}
             <Link href="https://github.com/aaronwriight" className="text-[#6f8200]">github</Link>{" "}
             <Link href="https://www.linkedin.com/in/aaron-wriight" className="text-[#6f8200]">linkedin</Link>{" "}
             <Link href="https://bsky.app/profile/aaronwriight.bsky.social" className="text-[#6f8200]">bluesky</Link>
+          </p>
+          <p className="m-0 mt-2 text-xs lowercase tracking-wider text-stone-500">
+            <Link href="/files/cv/WrightAaron_cv_2026_current.pdf" target="_blank" rel="noopener noreferrer" className="text-[#6f8200]">
+              cv
+            </Link>
           </p>
         </div>
       </div>

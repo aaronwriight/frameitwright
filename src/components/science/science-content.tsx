@@ -3,10 +3,10 @@ import Link from "next/link";
 const scienceLinks = [
   ["overview", "/cognitive-science"],
   ["about", "/cognitive-science/about"],
-  ["mentorship", "/cognitive-science/mentorship"],
   ["publications", "/cognitive-science/publications"],
   ["projects", "/cognitive-science/projects"],
   ["readings & resources", "/cognitive-science/readings-resources"],
+  ["mentorship", "/cognitive-science/mentorship"],
   ["cv", "/files/cv/WrightAaron_cv_2026_current.pdf"],
   ["home", "/"],
 ];
@@ -27,9 +27,9 @@ export function ScienceShell({
         style={{ columnGap: "4rem", gridTemplateColumns: "13rem minmax(0, 1fr)" }}
       >
         <aside className="space-y-5">
-          <Link href="/cognitive-science" className="block lowercase tracking-widest">
+          <span className="block lowercase tracking-widest">
             cognitive science
-          </Link>
+          </span>
           <nav className="flex flex-col items-start gap-1 text-xs lowercase tracking-wider text-stone-500">
             {scienceLinks.map(([label, href]) => (
               <Link

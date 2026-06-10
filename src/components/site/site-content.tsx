@@ -30,7 +30,6 @@ const sectionLinks = {
     ["home", "/"],
   ],
   contact: [
-    ["about", "/contact"],
     ["home", "/"],
   ],
 };
@@ -64,18 +63,12 @@ export function SitePageShell({
 export function SiteMenu() {
   return (
     <aside className="space-y-5">
-      <Link href="/" className="block lowercase tracking-widest">
-        home
-      </Link>
       <nav className="flex flex-col items-start gap-1 text-xs lowercase tracking-wider text-stone-500">
         {siteLinks.map(([label, href]) => (
           <Link key={href} href={href} className="whitespace-nowrap hover:text-stone-900 dark:hover:text-stone-200">
             {label}
           </Link>
         ))}
-        <Link href="/" className="whitespace-nowrap hover:text-stone-900 dark:hover:text-stone-200">
-          home
-        </Link>
       </nav>
     </aside>
   );
@@ -83,18 +76,16 @@ export function SiteMenu() {
 
 function SectionMenu({
   title,
-  href,
   links,
 }: {
   title: string;
-  href: string;
   links: string[][];
 }) {
   return (
     <aside className="space-y-5">
-      <Link href={href} className="block lowercase tracking-widest">
+      <span className="block lowercase tracking-widest">
         {title}
-      </Link>
+      </span>
       <nav className="flex flex-col items-start gap-1 text-xs lowercase tracking-wider text-stone-500">
         {links.map(([label, linkHref]) => (
           <Link key={linkHref} href={linkHref} className="whitespace-nowrap hover:text-stone-900 dark:hover:text-stone-200">
@@ -108,13 +99,11 @@ function SectionMenu({
 
 export function SectionPageShell({
   section,
-  sectionHref,
   links,
   title,
   children,
 }: {
   section: string;
-  sectionHref: string;
   links: string[][];
   title: string;
   children: React.ReactNode;
@@ -125,7 +114,7 @@ export function SectionPageShell({
         className="grid items-start gap-y-8"
         style={{ columnGap: "4rem", gridTemplateColumns: "13rem minmax(0, 1fr)" }}
       >
-        <SectionMenu title={section} href={sectionHref} links={links} />
+        <SectionMenu title={section} links={links} />
         <article
           className="prose prose-stone w-full max-w-none self-start text-left text-sm dark:prose-invert prose-headings:font-serif prose-headings:lowercase prose-a:text-[#6f8200] prose-h2:text-sm prose-h2:font-medium prose-h2:tracking-normal prose-h2:normal-case"
           style={{ maxWidth: "56rem" }}
@@ -146,7 +135,7 @@ export function PhotographyShell({
   children: React.ReactNode;
 }) {
   return (
-    <SectionPageShell section="photography" sectionHref="/frame-it-wright-photography" links={sectionLinks.photography} title={title}>
+    <SectionPageShell section="photography" links={sectionLinks.photography} title={title}>
       {children}
     </SectionPageShell>
   );
@@ -160,7 +149,7 @@ export function JournalShell({
   children: React.ReactNode;
 }) {
   return (
-    <SectionPageShell section="journal" sectionHref="/scope-for-imagination" links={sectionLinks.journal} title={title}>
+    <SectionPageShell section="journal" links={sectionLinks.journal} title={title}>
       {children}
     </SectionPageShell>
   );
@@ -174,7 +163,7 @@ export function LiteratureShell({
   children: React.ReactNode;
 }) {
   return (
-    <SectionPageShell section="literature" sectionHref="/literature" links={sectionLinks.literature} title={title}>
+    <SectionPageShell section="literature" links={sectionLinks.literature} title={title}>
       {children}
     </SectionPageShell>
   );
@@ -188,7 +177,7 @@ export function PersonalShell({
   children: React.ReactNode;
 }) {
   return (
-    <SectionPageShell section="personal" sectionHref="/personal" links={sectionLinks.personal} title={title}>
+    <SectionPageShell section="personal" links={sectionLinks.personal} title={title}>
       {children}
     </SectionPageShell>
   );
@@ -202,7 +191,7 @@ export function ContactShell({
   children: React.ReactNode;
 }) {
   return (
-    <SectionPageShell section="contact" sectionHref="/contact" links={sectionLinks.contact} title={title}>
+    <SectionPageShell section="contact" links={sectionLinks.contact} title={title}>
       {children}
     </SectionPageShell>
   );

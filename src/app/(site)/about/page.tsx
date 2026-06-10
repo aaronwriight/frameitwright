@@ -24,33 +24,62 @@ export default function AboutPage() {
       </div>
       <div>
         <h2 className="m-0  text-sm  font-medium antialiased"><b>nav</b></h2>
-        <pre className="m-0 mt-2 whitespace-pre-wrap bg-transparent p-0 font-serif text-sm leading-6 antialiased">
-{`home
-├─ cognitive science
-│  ├─ overview
-│  ├─ about
-│  ├─ mentorship
-│  ├─ publications
-│  ├─ projects
-│  │  ├─ extended language network
-│  │  └─ tidy tuesday
-│  ├─ readings & resources
-│  └─ cv
-├─ photography
-│  ├─ about
-│  └─ gallery
-├─ journal
-│  └─ about
-├─ literature
-│  ├─ about
-│  ├─ shared agency
-│  └─ sand dollar hunting
-├─ personal
-│  └─ about
-├─ contact
-│  └─ about
-└─ wiki`}
-        </pre>
+        <div className="not-prose mt-2 text-sm leading-6 text-stone-900 dark:text-stone-200">
+          <details>
+            <summary className="cursor-pointer lowercase">site pages</summary>
+            <div className="mt-2 space-y-1 pl-4">
+              <p className="m-0">home</p>
+              <details>
+                <summary className="cursor-pointer lowercase">cognitive science</summary>
+                <ul className="m-0 mt-1 list-none space-y-1 pl-4">
+                  <li>overview</li>
+                  <li>about</li>
+                  <li>publications</li>
+                  <li>projects</li>
+                  <li className="pl-4">extended language network</li>
+                  <li className="pl-4">tidy tuesday</li>
+                  <li>readings & resources</li>
+                  <li>mentorship</li>
+                  <li>cv</li>
+                </ul>
+              </details>
+              <details>
+                <summary className="cursor-pointer lowercase">photography</summary>
+                <ul className="m-0 mt-1 list-none space-y-1 pl-4">
+                  <li>about</li>
+                  <li>gallery</li>
+                </ul>
+              </details>
+              <details>
+                <summary className="cursor-pointer lowercase">journal</summary>
+                <ul className="m-0 mt-1 list-none space-y-1 pl-4">
+                  <li>about</li>
+                </ul>
+              </details>
+              <details>
+                <summary className="cursor-pointer lowercase">literature</summary>
+                <ul className="m-0 mt-1 list-none space-y-1 pl-4">
+                  <li>about</li>
+                  <li>shared agency</li>
+                  <li>sand dollar hunting</li>
+                </ul>
+              </details>
+              <details>
+                <summary className="cursor-pointer lowercase">personal</summary>
+                <ul className="m-0 mt-1 list-none space-y-1 pl-4">
+                  <li>about</li>
+                </ul>
+              </details>
+              <details>
+                <summary className="cursor-pointer lowercase">contact</summary>
+                <ul className="m-0 mt-1 list-none space-y-1 pl-4">
+                  <li>home</li>
+                </ul>
+              </details>
+              <p className="m-0">wiki</p>
+            </div>
+          </details>
+        </div>
       </div>
       <div>
         <h2 className="m-0  text-sm  font-medium antialiased"><b>dev</b></h2>

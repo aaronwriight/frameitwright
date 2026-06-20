@@ -17,10 +17,7 @@ export default function Guides({ guides }: { guides: SanityGuide[] }) {
 
   return (
     <main className="container relative mx-auto flex-1 px-6 py-11">
-      <div
-        className="grid items-start gap-y-8"
-        style={{ columnGap: "4rem", gridTemplateColumns: "13rem minmax(0, 1fr)" }}
-      >
+      <div className="grid items-start gap-y-8 md:grid-cols-[13rem_minmax(0,1fr)] md:gap-x-16">
         <SiteMenu />
         <section className="w-full self-start space-y-8 text-left">
           {groupedGuidesByYear.map((year) => {

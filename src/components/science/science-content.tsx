@@ -8,6 +8,7 @@ const scienceLinks = [
   ["readings & resources", "/cognitive-science/readings-resources"],
   ["mentorship", "/cognitive-science/mentorship"],
   ["cv", "/files/cv/WrightAaron_cv_2026_current.pdf"],
+  ["contact", "/contact"],
   ["home", "/"],
 ];
 
@@ -22,10 +23,7 @@ export function ScienceShell({
 }) {
   return (
     <main className="container mx-auto flex-1 px-6 py-11">
-      <div
-        className="grid items-start gap-y-8"
-        style={{ columnGap: "4rem", gridTemplateColumns: "13rem minmax(0, 1fr)" }}
-      >
+      <div className="grid items-start gap-y-8 md:grid-cols-[13rem_minmax(0,1fr)] md:gap-x-16">
         <aside className="space-y-5">
           <span className="block lowercase tracking-widest">
             cognitive science

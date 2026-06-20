@@ -11,7 +11,7 @@ export default function CognitiveScienceAboutPage() {
   return (
     <ScienceShell title="about">
       <p>
-        <strong>
+        <strong>   
           To me, science is <em>mentorship</em>.
         </strong>
       </p>

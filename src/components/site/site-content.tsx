@@ -12,11 +12,14 @@ const siteLinks = [
 const sectionLinks = {
   photography: [
     ["about", "/frame-it-wright-photography"],
+    ["portfolio", "/frame-it-wright-photography/portfolio"],
     ["gallery", "/frame-it-wright-photography/gallery"],
+    ["contact", "/contact"],
     ["home", "/"],
   ],
   journal: [
-    ["about", "/scope-for-imagination"],
+    ["journal", "/scope-for-imagination"],
+    ["opening note", "/scope-for-imagination#opening-note"],
     ["home", "/"],
   ],
   literature: [
@@ -46,10 +49,7 @@ export function SitePageShell({
 }) {
   return (
     <main className="container mx-auto flex-1 px-6 py-11">
-      <div
-        className="grid items-start gap-y-8"
-        style={{ columnGap: "4rem", gridTemplateColumns: "13rem minmax(0, 1fr)" }}
-      >
+      <div className="grid items-start gap-y-8 md:grid-cols-[13rem_minmax(0,1fr)] md:gap-x-16">
         <SiteMenu />
         <article
           className="prose prose-stone w-full max-w-none self-start text-left text-sm dark:prose-invert prose-headings:font-serif prose-headings:lowercase prose-a:text-[#6f8200] prose-h2:text-sm prose-h2:font-medium prose-h2:tracking-normal prose-h2:normal-case"
@@ -118,10 +118,7 @@ export function SectionPageShell({
 }) {
   return (
     <main className="container mx-auto flex-1 px-6 py-11">
-      <div
-        className="grid items-start gap-y-8"
-        style={{ columnGap: "4rem", gridTemplateColumns: "13rem minmax(0, 1fr)" }}
-      >
+      <div className="grid items-start gap-y-8 md:grid-cols-[13rem_minmax(0,1fr)] md:gap-x-16">
         <SectionMenu title={section} links={links} />
         <article
           className="prose prose-stone w-full max-w-none self-start text-left text-sm dark:prose-invert prose-headings:font-serif prose-headings:lowercase prose-a:text-[#6f8200] prose-h2:text-sm prose-h2:font-medium prose-h2:tracking-normal prose-h2:normal-case"
@@ -151,13 +148,15 @@ export function PhotographyShell({
 
 export function JournalShell({
   title,
+  showTitle = true,
   children,
 }: {
   title: string;
+  showTitle?: boolean;
   children: React.ReactNode;
 }) {
   return (
-    <SectionPageShell section="journal" links={sectionLinks.journal} title={title}>
+    <SectionPageShell section="journal" links={sectionLinks.journal} title={title} showTitle={showTitle}>
       {children}
     </SectionPageShell>
   );

@@ -67,25 +67,59 @@ export default function PersonalPage() {
 
       <details>
         <summary className="cursor-pointer list-none text-[#6f8200]">creative initiatives & inspirations</summary>
+        <p>
+          <strong>Creative Connections</strong>
+        </p>
         <ul>
           <li>
-            Eden Harfield at <Link href="https://www.edengracecreative.com">Eden Grace Creative</Link>
+            My talented friend and storyteller, Eden Harfield, at{" "}
+            <Link href="https://www.edengracecreative.com">Eden Grace Creative</Link>
           </li>
           <li>
-            Paintings and sketches by <Link href="https://www.instagram.com/jameswellborn.art/">James Wellborn</Link>
+            Mesmerizing paintings and sketches done by my friend,{" "}
+            <Link href="https://www.instagram.com/jameswellborn.art/">James Wellborn</Link>
           </li>
           <li>
             <Link href="https://www.etsy.com/shop/PhebeSunriseStudio">Phebe Sunrise Studio</Link>, a Maine-inspired print shop by{" "}
+            Kennebunk, ME-based artist (and long-time friend),{" "}
             <Link href="https://www.instagram.com/phebegrant.art/">Phebe Grant</Link>
           </li>
           <li>
-            Data visualization and information design by <Link href="https://www.cedricscherer.com">Cedric Scherer</Link>
+            A carousel of creative services, inspiration, and encouragement by my friend,{" "}
+            <Link href="https://www.melissazaldivar.com/">Melissa Zaldivar Sawyer</Link>
           </li>
           <li>
-            Transforming data into understanding: <Link href="https://nrennie.rbind.io">Nicola Rennie</Link>
+            <Link href="https://www.instagram.com/newnativephotography/">New Native Photography</Link>: elopement and weddings, captured by Lindsey
+            Tillman
+          </li>
+        </ul>
+        <p>
+          <strong>Inspirations</strong>
+        </p>
+        <ul>
+          <li>
+            The independent design studio, <Link href="https://houseofdakh.com/">HOUSEOFDAKH</Link>
           </li>
           <li>
-            Thomas Brasington&apos;s photographic journal, <Link href="https://www.thepostchaise.com">The Post Chaise</Link>
+            Data Visualization &amp; Information Design by <Link href="https://www.cedricscherer.com/">Cédric Scherer</Link>
+          </li>
+          <li>
+            Transforming data into understanding: <Link href="https://nrennie.rbind.io/">Nicola Rennie</Link>
+          </li>
+          <li>
+            Landscape photography by <Link href="https://www.frihead.ch/">Mathilde Rietsch</Link>
+          </li>
+          <li>
+            Thomas Brasington&apos;s stunning photographic journal, <Link href="https://www.thepostchaise.com/">The Post Chaise</Link>
+          </li>
+          <li>
+            Jon Bellion&apos;s <Link href="https://www.beautifulmindprojects.com/">Beautiful Mind Projects</Link>
+          </li>
+          <li>
+            Classical composer, <Link href="https://www.christopherdenniscoleman.com/">Christopher Dennis Coleman</Link>
+          </li>
+          <li>
+            The gripping memoir, <em>I&apos;m Glad My Mom Died</em>, from <Link href="https://www.jennettemccurdy.com/">Jennette McCurdy</Link>
           </li>
         </ul>
       </details>

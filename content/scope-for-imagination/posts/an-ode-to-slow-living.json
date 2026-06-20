@@ -1,0 +1,14 @@
+{
+  "slug": "an-ode-to-slow-living",
+  "title": "an ode to slow living",
+  "subtitle": "A first test of the journal format.",
+  "date": "2026-06-20",
+  "time": "19:28",
+  "location": "Cambridge, MA",
+  "entry": "0001",
+  "tags": [
+    "test",
+    "slow living"
+  ],
+  "bodyHtml": "<p>This is a test entry for Scope for Imagination—a small placeholder while the journal finds its shape.</p>"
+}

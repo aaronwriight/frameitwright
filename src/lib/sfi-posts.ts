@@ -6,6 +6,9 @@ export type SfiPost = {
   title: string;
   subtitle: string;
   date: string;
+  time: string;
+  location: string;
+  entry: string;
   tags: string[];
   bodyHtml: string;
 };
@@ -21,6 +24,9 @@ function isSfiPost(value: unknown): value is SfiPost {
     typeof post.title === "string" &&
     typeof post.subtitle === "string" &&
     typeof post.date === "string" &&
+    typeof post.time === "string" &&
+    typeof post.location === "string" &&
+    typeof post.entry === "string" &&
     Array.isArray(post.tags) &&
     post.tags.every((tag) => typeof tag === "string") &&
     typeof post.bodyHtml === "string"
@@ -70,4 +76,9 @@ export function formatSfiDate(date: string, includeYear = true): string {
     day: "numeric",
     year: includeYear ? "numeric" : undefined,
   });
+}
+
+export function formatSfiHeaderDate(date: string): string {
+  const [year, month, day] = date.split("-");
+  return `${Number(month)}.${Number(day)}.${year.slice(-2)}`;
 }

@@ -8,7 +8,6 @@ const scienceLinks = [
   ["readings & resources", "/cognitive-science/readings-resources"],
   ["mentorship", "/cognitive-science/mentorship"],
   ["cv", "/files/cv/WrightAaron_cv_2026_current.pdf"],
-  ["contact", "/contact"],
   ["home", "/"],
 ];
 

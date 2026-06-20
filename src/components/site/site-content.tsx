@@ -14,7 +14,6 @@ const sectionLinks = {
     ["about", "/frame-it-wright-photography"],
     ["portfolio", "/frame-it-wright-photography/portfolio"],
     ["gallery", "/frame-it-wright-photography/gallery"],
-    ["contact", "/contact"],
     ["home", "/"],
   ],
   literature: [
@@ -153,9 +152,9 @@ export function JournalShell({
   children: React.ReactNode;
 }) {
   const journalLinks = [
-    ["index", "/scope-for-imagination"],
-    ["about", "/scope-for-imagination/about"],
-    ...years.map((year) => [String(year), `/scope-for-imagination#${year}`]),
+    ["about", "/scope-for-imagination"],
+    ["index", "/scope-for-imagination/index"],
+    ...years.map((year) => [String(year), `/scope-for-imagination/${year}`]),
     ["home", "/"],
   ];
 

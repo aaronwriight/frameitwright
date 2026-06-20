@@ -12,7 +12,7 @@ import sys
 import unicodedata
 import zipfile
 from dataclasses import dataclass, field
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path, PurePosixPath
 from xml.etree import ElementTree as ET
 
@@ -53,6 +53,31 @@ def validate_date(value: str) -> str:
         return date.fromisoformat(value).isoformat()
     except ValueError as error:
         raise argparse.ArgumentTypeError("dates must use YYYY-MM-DD") from error
+
+
+def validate_time(value: str) -> str:
+    try:
+        return datetime.strptime(value, "%H:%M").strftime("%H:%M")
+    except ValueError as error:
+        raise argparse.ArgumentTypeError("times must use 24-hour HH:MM format") from error
+
+
+def normalize_entry(value: str) -> str:
+    if not value.isdigit() or int(value) < 1:
+        raise argparse.ArgumentTypeError("entry numbers must be positive integers")
+    return value.zfill(4)
+
+
+def next_entry(posts_directory: Path) -> str:
+    entry_numbers: list[int] = []
+    if posts_directory.exists():
+        for post_path in posts_directory.glob("*.json"):
+            try:
+                post = json.loads(post_path.read_text(encoding="utf-8"))
+                entry_numbers.append(int(post.get("entry", 0)))
+            except (OSError, ValueError, TypeError, json.JSONDecodeError):
+                continue
+    return str(max(entry_numbers, default=0) + 1).zfill(4)
 
 
 def paragraphs_from_text(source: str) -> str:
@@ -217,6 +242,9 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument("--subtitle", default="", help="optional post subtitle")
     parser.add_argument("--tags", default="", help="comma-separated tags, such as photography,science")
     parser.add_argument("--date", default=date.today().isoformat(), type=validate_date, help="publication date in YYYY-MM-DD format")
+    parser.add_argument("--time", default=datetime.now().strftime("%H:%M"), type=validate_time, help="entry time in 24-hour HH:MM format")
+    parser.add_argument("--location", required=True, help="location shown in the entry header")
+    parser.add_argument("--entry", type=normalize_entry, help="entry number; defaults to the next available four-digit number")
     parser.add_argument("--slug", help="optional URL slug; defaults to a slug made from the title")
     parser.add_argument("--replace", action="store_true", help="replace a post with the same slug")
     parser.add_argument("--posts-dir", type=Path, default=DEFAULT_POSTS_DIR, help=argparse.SUPPRESS)
@@ -250,6 +278,15 @@ def main() -> int:
         print(f"error: {post_path.name} already exists; pass --replace to overwrite it", file=sys.stderr)
         return 1
 
+    entry = arguments.entry
+    if entry is None and arguments.replace and post_path.exists():
+        try:
+            entry = normalize_entry(str(json.loads(post_path.read_text(encoding="utf-8")).get("entry", "")))
+        except (OSError, ValueError, TypeError, json.JSONDecodeError, argparse.ArgumentTypeError):
+            entry = None
+    if entry is None:
+        entry = next_entry(posts_directory)
+
     if arguments.replace and image_directory.exists():
         shutil.rmtree(image_directory)
 
@@ -264,6 +301,9 @@ def main() -> int:
         "title": arguments.title.strip(),
         "subtitle": arguments.subtitle.strip(),
         "date": arguments.date,
+        "time": arguments.time,
+        "location": arguments.location.strip(),
+        "entry": entry,
         "tags": parse_tags(arguments.tags),
         "bodyHtml": body_html,
     }
@@ -274,7 +314,7 @@ def main() -> int:
     relative_post_path = post_path.relative_to(PROJECT_ROOT) if post_path.is_relative_to(PROJECT_ROOT) else post_path
     image_count = len(list(image_directory.iterdir())) if image_directory.exists() else 0
     print(f"created {relative_post_path}")
-    print(f"slug: {slug} | tags: {', '.join(post['tags']) or 'none'} | images: {image_count}")
+    print(f"entry: {entry} | slug: {slug} | tags: {', '.join(post['tags']) or 'none'} | images: {image_count}")
     return 0
 
 

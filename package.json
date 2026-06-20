@@ -6,7 +6,8 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "sfi:new": "python3 scripts/sfi_blogpost.py"
   },
   "dependencies": {
     "@portabletext/react": "^3.2.1",

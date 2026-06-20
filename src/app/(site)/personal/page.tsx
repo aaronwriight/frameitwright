@@ -67,9 +67,6 @@ export default function PersonalPage() {
 
       <details>
         <summary className="cursor-pointer list-none text-[#6f8200]">creative initiatives & inspirations</summary>
-        <p>
-          <strong>Creative Connections</strong>
-        </p>
         <ul>
           <li>
             My talented friend and storyteller, Eden Harfield, at{" "}
@@ -85,32 +82,27 @@ export default function PersonalPage() {
             <Link href="https://www.instagram.com/phebegrant.art/">Phebe Grant</Link>
           </li>
           <li>
-            A carousel of creative services, inspiration, and encouragement by my friend,{" "}
-            <Link href="https://www.melissazaldivar.com/">Melissa Zaldivar Sawyer</Link>
+            Data visualization and information design by <Link href="https://www.cedricscherer.com">Cédric Scherer</Link>
+          </li>
+          <li>
+            Transforming data into understanding: <Link href="https://nrennie.rbind.io">Nicola Rennie</Link>
+          </li>
+          <li>
+            Thomas Brasington&apos;s stunning photographic journal, <Link href="https://www.thepostchaise.com">The Post Chaise</Link>
           </li>
           <li>
             <Link href="https://www.instagram.com/newnativephotography/">New Native Photography</Link>: elopement and weddings, captured by Lindsey
             Tillman
           </li>
-        </ul>
-        <p>
-          <strong>Inspirations</strong>
-        </p>
-        <ul>
+          <li>
+            A carousel of creative services, inspiration, and encouragement by my friend,{" "}
+            <Link href="https://www.melissazaldivar.com/">Melissa Zaldivar Sawyer</Link>
+          </li>
           <li>
             The independent design studio, <Link href="https://houseofdakh.com/">HOUSEOFDAKH</Link>
           </li>
           <li>
-            Data Visualization &amp; Information Design by <Link href="https://www.cedricscherer.com/">Cédric Scherer</Link>
-          </li>
-          <li>
-            Transforming data into understanding: <Link href="https://nrennie.rbind.io/">Nicola Rennie</Link>
-          </li>
-          <li>
             Landscape photography by <Link href="https://www.frihead.ch/">Mathilde Rietsch</Link>
-          </li>
-          <li>
-            Thomas Brasington&apos;s stunning photographic journal, <Link href="https://www.thepostchaise.com/">The Post Chaise</Link>
           </li>
           <li>
             Jon Bellion&apos;s <Link href="https://www.beautifulmindprojects.com/">Beautiful Mind Projects</Link>

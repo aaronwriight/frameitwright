@@ -17,11 +17,6 @@ const sectionLinks = {
     ["contact", "/contact"],
     ["home", "/"],
   ],
-  journal: [
-    ["journal", "/scope-for-imagination"],
-    ["opening note", "/scope-for-imagination#opening-note"],
-    ["home", "/"],
-  ],
   literature: [
     ["about", "/literature"],
     ["shared agency", "/literature/shared-agency"],
@@ -149,14 +144,23 @@ export function PhotographyShell({
 export function JournalShell({
   title,
   showTitle = true,
+  years = [],
   children,
 }: {
   title: string;
   showTitle?: boolean;
+  years?: number[];
   children: React.ReactNode;
 }) {
+  const journalLinks = [
+    ["index", "/scope-for-imagination"],
+    ["about", "/scope-for-imagination/about"],
+    ...years.map((year) => [String(year), `/scope-for-imagination#${year}`]),
+    ["home", "/"],
+  ];
+
   return (
-    <SectionPageShell section="journal" links={sectionLinks.journal} title={title} showTitle={showTitle}>
+    <SectionPageShell section="journal" links={journalLinks} title={title} showTitle={showTitle}>
       {children}
     </SectionPageShell>
   );

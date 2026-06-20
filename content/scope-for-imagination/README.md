@@ -1,0 +1,23 @@
+# Scope for Imagination posts
+
+Write a post in Word, plain text, or HTML, then run:
+
+```sh
+python3 scripts/sfi_blogpost.py \
+  --tags photography,science \
+  --doc="/path/to/post.docx" \
+  --title="Post title" \
+  --subtitle="An optional subtitle"
+```
+
+Optional arguments:
+
+- `--date=2026-06-20` sets the publication date; it defaults to today.
+- `--slug=custom-url` overrides the URL generated from the title.
+- `--replace` replaces an existing post with the same slug.
+
+The script creates one JSON file in `content/scope-for-imagination/posts/`. Images embedded in a Word document are extracted to `public/images/scope-for-imagination/<post-slug>/` and remain in their original position in the post.
+
+Word headings, bold text, italics, hyperlinks, quotations, lists, paragraphs, line breaks, and embedded images receive basic HTML formatting. Add useful alt text to images in Word when possible; the script carries it into the website.
+
+For plain-text posts, separate paragraphs with a blank line. Lines beginning with `#`, `##`, or `###` become headings, and consecutive lines beginning with `-` become a list. HTML files use the contents of their `<body>` element.

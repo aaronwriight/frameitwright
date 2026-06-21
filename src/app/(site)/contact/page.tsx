@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ContactShell } from "@/components/site/site-content";
+import { NewsletterSignup } from "@/components/site/newsletter-signup";
 
 export const metadata: Metadata = {
   title: "contact",
@@ -52,46 +53,40 @@ export default function ContactPage() {
         my research, creative efforts, or just to have a chat!
       </p>
 
-      <div className="not-prose grid gap-5 sm:grid-cols-2">
-        <section className="border border-t-2 border-stone-300 p-6 dark:border-stone-700" style={{ borderTopColor: "#2aa198" }}>
-          <p className="text-[0.65rem] lowercase tracking-[0.2em] text-[#2aa198]">research &amp; academia</p>
-          <h2 className="mt-2 font-serif text-base font-normal lowercase text-stone-900 dark:text-stone-100">science</h2>
-          <p className="mt-4 text-xs leading-6 text-stone-500">Research questions, collaborations, mentorship, talks, and academic correspondence.</p>
-          <p className="mt-5 font-serif text-sm text-[#2aa198]">aawva {"{at}"} mit {"{dot}"} edu</p>
-          <nav className="mt-5 flex flex-wrap gap-x-3 gap-y-1 text-xs lowercase tracking-wider">
-            <Link href="https://github.com/aaronwriight" className="text-[#2aa198]">github</Link>
-            <Link href="https://scholar.google.com/citations?user=2b1N4FcAAAAJ&hl=en" className="text-[#2aa198]">google scholar</Link>
-            <Link href="https://orcid.org/0009-0003-2532-2866" className="text-[#2aa198]">orcid</Link>
-          </nav>
-        </section>
+      <div className="not-prose border-y border-stone-300 dark:border-stone-700">
+        <div className="grid sm:grid-cols-2">
+          <section className="py-7 sm:pr-8">
+            <h2 className="font-serif text-sm font-normal lowercase tracking-widest text-stone-900 dark:text-stone-100">science</h2>
+            <p className="mt-3 text-xs leading-6 text-stone-500">Research questions, collaborations, mentorship, talks, and academic correspondence.</p>
+            <p className="mt-5 font-serif text-sm text-[#6f8200]">aawva {"{at}"} mit {"{dot}"} edu</p>
+            <nav className="mt-5 flex flex-wrap gap-x-3 gap-y-1 text-xs lowercase tracking-wider">
+              <Link href="https://github.com/aaronwriight" className="text-[#6f8200]">github</Link>
+              <Link href="https://scholar.google.com/citations?user=2b1N4FcAAAAJ&hl=en" className="text-[#6f8200]">google scholar</Link>
+              <Link href="https://orcid.org/0009-0003-2532-2866" className="text-[#6f8200]">orcid</Link>
+            </nav>
+          </section>
 
-        <section className="border border-t-2 border-stone-300 p-6 dark:border-stone-700" style={{ borderTopColor: "#d33682" }}>
-          <p className="text-[0.65rem] lowercase tracking-[0.2em] text-[#d33682]">visual work &amp; personal projects</p>
-          <h2 className="mt-2 font-serif text-base font-normal lowercase text-stone-900 dark:text-stone-100">photography &amp; creative</h2>
-          <p className="mt-4 text-xs leading-6 text-stone-500">Photography, bookings, creative collaborations, and other ideas looking for a home.</p>
-          <p className="mt-5 font-serif text-sm">
-            <Link href="mailto:frameitwright@gmail.com" className="text-[#d33682]">frameitwright@gmail.com</Link>
+          <section className="border-t border-stone-300 py-7 dark:border-stone-700 sm:border-l sm:border-t-0 sm:pl-8">
+            <h2 className="font-serif text-sm font-normal lowercase tracking-widest text-stone-900 dark:text-stone-100">photography &amp; creative</h2>
+            <p className="mt-3 text-xs leading-6 text-stone-500">Photography, bookings, creative collaborations, and other ideas looking for a home.</p>
+            <p className="mt-5 font-serif text-sm">
+              <Link href="mailto:frameitwright@gmail.com" className="text-[#6f8200]">frameitwright@gmail.com</Link>
+            </p>
+            <nav className="mt-5 flex flex-wrap gap-x-3 gap-y-1 text-xs lowercase tracking-wider">
+              <Link href="https://www.instagram.com/frameitwrightphotography/" className="text-[#6f8200]">instagram</Link>
+              <Link href="https://www.buymeacoffee.com/aaronwriight" className="text-[#6f8200]">buy me a coffee ;)</Link>
+            </nav>
+          </section>
+        </div>
+
+        <section className="border-t border-stone-300 py-7 dark:border-stone-700">
+          <h2 className="font-serif text-sm font-normal lowercase tracking-widest text-stone-900 dark:text-stone-100">mailing list</h2>
+          <p className="mt-3 max-w-2xl text-xs leading-6 text-stone-500">
+            Get an occasional email when a new entry finds its way into Scope for Imagination.
           </p>
-          <nav className="mt-5 flex flex-wrap gap-x-3 gap-y-1 text-xs lowercase tracking-wider">
-            <Link href="https://www.instagram.com/frameitwrightphotography/" className="text-[#d33682]">instagram</Link>
-            <Link href="https://www.buymeacoffee.com/aaronwriight" className="text-[#d33682]">buy me a coffee ;)</Link>
-          </nav>
+          <NewsletterSignup />
         </section>
       </div>
-
-      <section className="not-prose border border-l-2 border-stone-300 p-6 dark:border-stone-700" style={{ borderLeftColor: "#b58900" }}>
-        <p className="text-[0.65rem] lowercase tracking-[0.2em] text-[#b58900]">scope for imagination</p>
-        <h2 className="mt-2 font-serif text-base font-normal lowercase text-stone-900 dark:text-stone-100">mailing list</h2>
-        <div className="mt-3 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
-          <p className="max-w-xl text-xs leading-6 text-stone-500">An occasional note when something new finds its way into the journal.</p>
-          <Link
-            href="mailto:frameitwright@gmail.com?subject=Scope%20for%20Imagination%20mailing%20list&body=Hi%20Aaron%2C%0A%0APlease%20add%20me%20to%20the%20Scope%20for%20Imagination%20mailing%20list.%0A"
-            className="whitespace-nowrap text-xs lowercase tracking-widest text-[#b58900] hover:underline"
-          >
-            join the list →
-          </Link>
-        </div>
-      </section>
 
       <p>Looking forward to connecting!</p>
     </ContactShell>

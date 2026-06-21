@@ -19,6 +19,7 @@ from xml.etree import ElementTree as ET
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_POSTS_DIR = PROJECT_ROOT / "content" / "scope-for-imagination" / "posts"
 DEFAULT_IMAGES_DIR = PROJECT_ROOT / "public" / "images" / "scope-for-imagination"
+DEFAULT_NEWSLETTERS_DIR = PROJECT_ROOT / "content" / "scope-for-imagination" / "newsletters"
 
 NAMESPACES = {
     "a": "http://schemas.openxmlformats.org/drawingml/2006/main",
@@ -72,6 +73,43 @@ def next_entry(posts_directory: Path) -> str:
             except (OSError, ValueError, TypeError, json.JSONDecodeError):
                 continue
     return str(max(entry_numbers, default=0) + 1).zfill(4)
+
+
+def newsletter_for_post(post: dict[str, object]) -> dict[str, str]:
+    title = str(post["title"])
+    subtitle = str(post["subtitle"])
+    entry = str(post["entry"])
+    date_parts = str(post["date"]).split("-")
+    display_date = f"{int(date_parts[1])}.{int(date_parts[2])}.{date_parts[0][-2:]}"
+    entry_url = "[[ENTRY_URL]]"
+    unsubscribe_url = "{{{RESEND_UNSUBSCRIBE_URL}}}"
+    subject = f"{title}: {subtitle}"
+
+    email_html = (
+        "<p>Hello {{{contact.first_name|there}}},</p>"
+        "<p>There is a new entry in <em>Scope for Imagination</em>.</p>"
+        f"<h1>{html.escape(title)}</h1>"
+        f"<p><em>{html.escape(subtitle)}</em></p>"
+        f"<p>{display_date} • {html.escape(str(post['location']))} • {entry}</p>"
+        f'<p><a href="{entry_url}">Read entry {entry} →</a></p>'
+        f'<p><small><a href="{unsubscribe_url}">Unsubscribe</a></small></p>'
+    )
+    email_text = (
+        "Hello {{{contact.first_name|there}}},\n\n"
+        "There is a new entry in Scope for Imagination.\n\n"
+        f"{subject}\n{display_date} • {post['location']} • {entry}\n\n"
+        f"Read entry {entry}: {entry_url}\n\n"
+        f"Unsubscribe: {unsubscribe_url}\n"
+    )
+
+    return {
+        "entry": entry,
+        "name": f"SFI {entry}: {subtitle}",
+        "subject": subject,
+        "previewText": f"A new Scope for Imagination entry: {subtitle}",
+        "html": email_html,
+        "text": email_text,
+    }
 
 
 def paragraphs_from_text(source: str) -> str:
@@ -242,6 +280,7 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument("--replace", action="store_true", help="replace the post matching --entry")
     parser.add_argument("--posts-dir", type=Path, default=DEFAULT_POSTS_DIR, help=argparse.SUPPRESS)
     parser.add_argument("--images-dir", type=Path, default=DEFAULT_IMAGES_DIR, help=argparse.SUPPRESS)
+    parser.add_argument("--newsletters-dir", type=Path, default=DEFAULT_NEWSLETTERS_DIR, help=argparse.SUPPRESS)
     return parser.parse_args()
 
 
@@ -259,6 +298,7 @@ def main() -> int:
 
     posts_directory = arguments.posts_dir.expanduser().resolve()
     images_root = arguments.images_dir.expanduser().resolve()
+    newsletters_directory = arguments.newsletters_dir.expanduser().resolve()
     if arguments.replace and arguments.entry is None:
         print("error: --replace requires --entry", file=sys.stderr)
         return 1
@@ -293,10 +333,14 @@ def main() -> int:
 
     posts_directory.mkdir(parents=True, exist_ok=True)
     post_path.write_text(json.dumps(post, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    newsletters_directory.mkdir(parents=True, exist_ok=True)
+    newsletter_path = newsletters_directory / f"{entry}.json"
+    newsletter_path.write_text(json.dumps(newsletter_for_post(post), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     relative_post_path = post_path.relative_to(PROJECT_ROOT) if post_path.is_relative_to(PROJECT_ROOT) else post_path
     image_count = len(list(image_directory.iterdir())) if image_directory.exists() else 0
     print(f"created {relative_post_path}")
+    print(f"created newsletter draft {newsletter_path.name}")
     print(f"entry: {entry} | url: /scope-for-imagination/{entry} | tags: {', '.join(post['tags']) or 'none'} | images: {image_count}")
     return 0
 

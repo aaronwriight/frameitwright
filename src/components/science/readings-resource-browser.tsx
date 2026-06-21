@@ -111,9 +111,6 @@ const readings = [
 
 const resources = [
   ["{here}", "A simpler way to find your files", "https://here.r-lib.org"],
-  ["{tidypandas}", "A grammar of data manipulation for pandas inspired by tidyverse", "https://tidypyverse.github.io/tidypandas/_build/html/index.html"],
-  ["Meaning Extraction Helper", "Text analysis, topic modeling, and language exploration", "https://www.ryanboyd.io/software/meh/"],
-  ["MKernel", "A Jupyter Kernel for Matlab", "https://github.com/allefeld/mkernel"],
   ["Andy's Brain Book", "Neuroimaging walkthroughs", "https://andysbrainbook.readthedocs.io/en/latest/index.html"],
   ["BIDS", "Brain Imaging Data Structure", "https://bids.neuroimaging.io"],
   ["FreeSurferWiki", "Structural and functional MRI analysis", "https://surfer.nmr.mgh.harvard.edu/fswiki"],

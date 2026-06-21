@@ -16,47 +16,47 @@ export function SfiPostHeader({
   return (
     <header className={className}>
       {large ? (
-        <>
-          <h1 className="font-serif text-2xl font-normal leading-tight text-stone-900 dark:text-stone-100 sm:text-3xl">{post.title}</h1>
-          <p className="mt-2 font-serif text-base italic leading-6 text-stone-500 sm:text-lg">{post.subtitle}</p>
-        </>
+        <h1 className="font-serif text-2xl font-normal leading-tight text-stone-900 dark:text-stone-100 sm:text-3xl">{post.title}</h1>
       ) : (
-        <>
-          <h3 className="font-serif text-lg font-normal leading-snug text-stone-900 dark:text-stone-100">
-            {href ? (
-              <Link href={href} className="hover:text-[#6f8200]">
-                {post.title}
-              </Link>
-            ) : (
-              post.title
-            )}
-          </h3>
+        <h3 className="font-serif text-lg font-normal leading-snug text-stone-900 dark:text-stone-100">
           {href ? (
             <Link href={href} className="hover:text-[#6f8200]">
-              <p className="mt-1 font-serif text-sm italic leading-6 text-stone-500">{post.subtitle}</p>
+              {post.title}
             </Link>
           ) : (
-            <p className="mt-1 font-serif text-sm italic leading-6 text-stone-500">{post.subtitle}</p>
+            post.title
           )}
-        </>
+        </h3>
       )}
 
-      <p className="mt-3 text-xs leading-6 text-stone-500">
-        <time dateTime={`${post.date}T${post.time}`}>
-          {formatSfiHeaderDate(post.date)} • {post.time}
-        </time>{" "}
-        • {post.location} • {post.entry}
-      </p>
+      <div className="mt-2 space-y-2">
+        {href ? (
+          <p className={`font-serif italic leading-6 text-stone-500 ${large ? "text-base sm:text-lg" : "text-sm"}`}>
+            <Link href={href} className="hover:text-[#6f8200]">
+              {post.subtitle}
+            </Link>
+          </p>
+        ) : (
+          <p className={`font-serif italic leading-6 text-stone-500 ${large ? "text-base sm:text-lg" : "text-sm"}`}>{post.subtitle}</p>
+        )}
 
-      {post.tags.length > 0 && (
-        <ul className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-[0.65rem] lowercase tracking-widest">
-          {post.tags.map((tag) => (
-            <li key={tag} style={{ color: getSfiTagColor(tag) }}>
-              {tag}
-            </li>
-          ))}
-        </ul>
-      )}
+        <p className="text-xs leading-6 text-stone-500">
+          <time dateTime={`${post.date}T${post.time}`}>
+            {formatSfiHeaderDate(post.date)} • {post.time}
+          </time>{" "}
+          • {post.location} • {post.entry}
+        </p>
+
+        {post.tags.length > 0 && (
+          <ul className="flex flex-wrap gap-x-3 gap-y-1 text-[0.65rem] lowercase tracking-widest">
+            {post.tags.map((tag) => (
+              <li key={tag} style={{ color: getSfiTagColor(tag) }}>
+                {tag}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </header>
   );
 }

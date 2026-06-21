@@ -55,7 +55,7 @@ export default async function ScopeForImaginationEntryPage({ params }: { params:
 
   return (
     <JournalShell title={post.title} showTitle={false} years={years}>
-      <article className="not-prose max-w-2xl">
+      <article className="not-prose w-full max-w-none">
         <Link href="/scope-for-imagination/index" className="text-xs lowercase tracking-widest text-stone-500 hover:text-[#6f8200]">
           ← index
         </Link>

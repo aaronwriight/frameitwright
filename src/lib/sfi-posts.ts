@@ -92,6 +92,7 @@ export function formatSfiPostTitle(post: Pick<SfiPost, "title" | "subtitle">): s
 }
 
 const tagColors: Record<string, string> = {
+  musings: "#859900",
   thoughts: "#859900",
   "cognitive science": "#2aa198",
   science: "#2aa198",
@@ -99,6 +100,7 @@ const tagColors: Record<string, string> = {
   travel: "#268bd2",
   faith: "#6c71c4",
   adventure: "#cb4b16",
+  "life update": "#b58900",
 };
 
 const fallbackTagColors = ["#859900", "#2aa198", "#d33682", "#268bd2", "#6c71c4", "#cb4b16", "#b58900", "#dc322f"];

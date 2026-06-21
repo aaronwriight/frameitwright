@@ -9,7 +9,6 @@ import json
 import re
 import shutil
 import sys
-import unicodedata
 import zipfile
 from dataclasses import dataclass, field
 from datetime import date, datetime
@@ -32,11 +31,6 @@ RELATIONSHIPS_NS = "http://schemas.openxmlformats.org/package/2006/relationships
 
 def qname(namespace: str, name: str) -> str:
     return f"{{{NAMESPACES[namespace]}}}{name}"
-
-
-def slugify(value: str) -> str:
-    normalized = unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode("ascii")
-    return re.sub(r"[^a-z0-9]+", "-", normalized.lower()).strip("-")
 
 
 def parse_tags(value: str) -> list[str]:
@@ -245,8 +239,7 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument("--time", default=datetime.now().strftime("%H:%M"), type=validate_time, help="entry time in 24-hour HH:MM format")
     parser.add_argument("--location", required=True, help="location shown in the entry header")
     parser.add_argument("--entry", type=normalize_entry, help="entry number; defaults to the next available four-digit number")
-    parser.add_argument("--slug", help="optional URL slug; defaults to a slug made from the subtitle")
-    parser.add_argument("--replace", action="store_true", help="replace a post with the same slug")
+    parser.add_argument("--replace", action="store_true", help="replace the post matching --entry")
     parser.add_argument("--posts-dir", type=Path, default=DEFAULT_POSTS_DIR, help=argparse.SUPPRESS)
     parser.add_argument("--images-dir", type=Path, default=DEFAULT_IMAGES_DIR, help=argparse.SUPPRESS)
     return parser.parse_args()
@@ -264,40 +257,30 @@ def main() -> int:
         print("error: --doc must be a .docx, .txt, .html, or .htm file", file=sys.stderr)
         return 1
 
-    slug = slugify(arguments.slug or arguments.subtitle)
-    if not slug:
-        print("error: the subtitle or --slug must contain letters or numbers", file=sys.stderr)
-        return 1
-
     posts_directory = arguments.posts_dir.expanduser().resolve()
     images_root = arguments.images_dir.expanduser().resolve()
-    post_path = posts_directory / f"{slug}.json"
-    image_directory = images_root / slug
-
-    if post_path.exists() and not arguments.replace:
-        print(f"error: {post_path.name} already exists; pass --replace to overwrite it", file=sys.stderr)
+    if arguments.replace and arguments.entry is None:
+        print("error: --replace requires --entry", file=sys.stderr)
         return 1
 
-    entry = arguments.entry
-    if entry is None and arguments.replace and post_path.exists():
-        try:
-            entry = normalize_entry(str(json.loads(post_path.read_text(encoding="utf-8")).get("entry", "")))
-        except (OSError, ValueError, TypeError, json.JSONDecodeError, argparse.ArgumentTypeError):
-            entry = None
-    if entry is None:
-        entry = next_entry(posts_directory)
+    entry = arguments.entry or next_entry(posts_directory)
+    post_path = posts_directory / f"{entry}.json"
+    image_directory = images_root / entry
+
+    if post_path.exists() and not arguments.replace:
+        print(f"error: entry {entry} already exists; pass --replace --entry={entry} to overwrite it", file=sys.stderr)
+        return 1
 
     if arguments.replace and image_directory.exists():
         shutil.rmtree(image_directory)
 
     if suffix == ".docx":
-        body_html = body_from_docx(document, image_directory, f"/images/scope-for-imagination/{slug}")
+        body_html = body_from_docx(document, image_directory, f"/images/scope-for-imagination/{entry}")
     else:
         source = document.read_text(encoding="utf-8")
         body_html = body_from_html(source) if suffix in {".html", ".htm"} else paragraphs_from_text(source)
 
     post = {
-        "slug": slug,
         "title": arguments.title.strip(),
         "subtitle": arguments.subtitle.strip(),
         "date": arguments.date,
@@ -314,7 +297,7 @@ def main() -> int:
     relative_post_path = post_path.relative_to(PROJECT_ROOT) if post_path.is_relative_to(PROJECT_ROOT) else post_path
     image_count = len(list(image_directory.iterdir())) if image_directory.exists() else 0
     print(f"created {relative_post_path}")
-    print(f"entry: {entry} | slug: {slug} | tags: {', '.join(post['tags']) or 'none'} | images: {image_count}")
+    print(f"entry: {entry} | url: /scope-for-imagination/{entry} | tags: {', '.join(post['tags']) or 'none'} | images: {image_count}")
     return 0
 
 

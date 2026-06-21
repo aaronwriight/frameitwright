@@ -9,6 +9,11 @@ export const metadata: Metadata = {
   title: "aaron wright | cognitive scientist, artist",
   description: "cognitive scientist, artist",
   metadataBase: new URL(`https://${process.env.VERCEL_URL}`),
+  icons: {
+    icon: [{ url: "/sand_dollar.png", type: "image/png" }],
+    shortcut: "/sand_dollar.png",
+    apple: "/sand_dollar.png",
+  },
   openGraph: {
     title: "aaron wright | cognitive scientist, artist",
     description: "cognitive scientist, artist",

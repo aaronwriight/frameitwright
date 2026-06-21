@@ -10,8 +10,8 @@ function PostRows({ posts }: { posts: SfiPost[] }) {
   return (
     <div className="border-t border-stone-300 dark:border-stone-700">
       {posts.map((post) => (
-        <article key={post.slug} className="border-b border-stone-300 py-6 dark:border-stone-700">
-          <SfiPostHeader post={post} href={`/scope-for-imagination/${post.slug}`} />
+        <article key={post.entry} className="border-b border-stone-300 py-6 dark:border-stone-700">
+          <SfiPostHeader post={post} href={`/scope-for-imagination/${post.entry}`} />
         </article>
       ))}
     </div>

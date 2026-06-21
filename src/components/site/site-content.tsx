@@ -14,6 +14,7 @@ const sectionLinks = {
     ["about", "/frame-it-wright-photography"],
     ["portfolio", "/frame-it-wright-photography/portfolio"],
     ["gallery", "/frame-it-wright-photography/gallery"],
+    ["booking", "/frame-it-wright-photography/booking"],
     ["home", "/"],
   ],
   literature: [

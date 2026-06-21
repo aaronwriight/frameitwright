@@ -16,10 +16,9 @@ Optional arguments:
 - `--date=2026-06-20` sets the publication date; it defaults to today.
 - `--time=19:28` sets the entry time using a 24-hour clock; it defaults to the current time.
 - `--entry=0001` overrides the automatically assigned four-digit entry number.
-- `--slug=custom-url` overrides the URL generated from the title.
-- `--replace` replaces an existing post with the same slug.
+- `--replace --entry=0001` replaces an existing numbered entry.
 
-The script creates one JSON file in `content/scope-for-imagination/posts/`. Images embedded in a Word document are extracted to `public/images/scope-for-imagination/<post-slug>/` and remain in their original position in the post.
+The script creates one numbered JSON file in `content/scope-for-imagination/posts/`. Entry `0001` lives at `/scope-for-imagination/0001`. Images embedded in a Word document are extracted to `public/images/scope-for-imagination/<entry-number>/` and remain in their original position in the post.
 
 Every post header follows the same structure:
 

@@ -9,13 +9,15 @@ import { formatSfiPostTitle, getAllSfiPosts, getSfiPost, getSfiYears } from "@/l
 export async function generateStaticParams() {
   const posts = await getAllSfiPosts();
   const years = getSfiYears(posts);
-  return [...posts.map((post) => ({ slug: post.slug })), ...years.map((year) => ({ slug: String(year) }))];
+  return [...posts.map((post) => ({ slug: post.entry })), ...years.map((year) => ({ slug: String(year) }))];
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
+  const posts = await getAllSfiPosts();
+  const years = getSfiYears(posts);
 
-  if (/^\d{4}$/.test(slug)) {
+  if (years.includes(Number(slug))) {
     return {
       title: `${slug} | scope for imagination`,
       description: `Scope for Imagination journal entries from ${slug}.`,
@@ -36,11 +38,9 @@ export default async function ScopeForImaginationEntryPage({ params }: { params:
   const allPosts = await getAllSfiPosts();
   const years = getSfiYears(allPosts);
 
-  if (/^\d{4}$/.test(slug)) {
+  if (years.includes(Number(slug))) {
     const year = Number(slug);
     const posts = allPosts.filter((post) => post.date.startsWith(slug));
-    if (!years.includes(year)) notFound();
-
     return (
       <JournalShell title={slug} years={years}>
         <div className="not-prose mt-10">

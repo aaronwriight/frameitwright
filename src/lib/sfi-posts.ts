@@ -2,7 +2,6 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 
 export type SfiPost = {
-  slug: string;
   title: string;
   subtitle: string;
   date: string;
@@ -20,7 +19,6 @@ function isSfiPost(value: unknown): value is SfiPost {
 
   const post = value as Partial<SfiPost>;
   return (
-    typeof post.slug === "string" &&
     typeof post.title === "string" &&
     typeof post.subtitle === "string" &&
     typeof post.date === "string" &&
@@ -61,9 +59,9 @@ export async function getAllSfiPosts(): Promise<SfiPost[]> {
   return posts.filter((post): post is SfiPost => post !== null).sort((a, b) => b.date.localeCompare(a.date));
 }
 
-export async function getSfiPost(slug: string): Promise<SfiPost | null> {
-  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) return null;
-  return readPostFile(`${slug}.json`);
+export async function getSfiPost(entry: string): Promise<SfiPost | null> {
+  if (!/^\d{4}$/.test(entry)) return null;
+  return readPostFile(`${entry}.json`);
 }
 
 export function getSfiYears(posts: SfiPost[]): number[] {

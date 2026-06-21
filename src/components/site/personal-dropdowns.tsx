@@ -78,6 +78,7 @@ export function PersonalDropdowns() {
           <li>Jon Bellion&apos;s <Link href="https://www.beautifulmindprojects.com/">Beautiful Mind Projects</Link></li>
           <li>Classical composer, <Link href="https://www.christopherdenniscoleman.com/">Christopher Dennis Coleman</Link></li>
           <li>The gripping memoir, <em>I&apos;m Glad My Mom Died</em>, from <Link href="https://www.jennettemccurdy.com/">Jennette McCurdy</Link></li>
+          <li>Keep up with Scope for Imagination through the <Link href="/scope-for-imagination/mailing-list">mailing list</Link></li>
         </ul>
       )}
     </div>

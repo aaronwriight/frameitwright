@@ -5,7 +5,8 @@ const interests = new Set([
   "life updates",
   "musings",
   "cognitive science",
-  "photography, travel & adventure",
+  "photography",
+  "travel and adventure",
   "faith",
 ]);
 
@@ -23,16 +24,13 @@ export async function POST(request: Request) {
   if (body.company) return NextResponse.json({ message: "You’re on the list—thank you!" });
 
   const firstName = typeof body.firstName === "string" ? body.firstName.trim().slice(0, 80) : "";
+  const lastName = typeof body.lastName === "string" ? body.lastName.trim().slice(0, 80) : "";
   const email = typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
   const interest = typeof body.interest === "string" && interests.has(body.interest) ? body.interest : "everything";
 
   if (!emailPattern.test(email) || email.length > 254) {
     return NextResponse.json({ message: "Please enter a valid email address." }, { status: 400 });
   }
-  if (body.consent !== "yes") {
-    return NextResponse.json({ message: "Please confirm that you’d like to receive updates." }, { status: 400 });
-  }
-
   const apiKey = process.env.RESEND_API_KEY;
   const segmentId = process.env.RESEND_SFI_SEGMENT_ID;
   if (!apiKey || !segmentId) {
@@ -48,6 +46,7 @@ export async function POST(request: Request) {
     body: JSON.stringify({
       email,
       first_name: firstName || undefined,
+      last_name: lastName || undefined,
       unsubscribed: false,
       properties: { interest },
       segments: [{ id: segmentId }],
@@ -59,11 +58,21 @@ export async function POST(request: Request) {
   }
 
   if (response.status === 409) {
+    const updateResponse = await fetch(`https://api.resend.com/contacts/${encodeURIComponent(email)}`, {
+      method: "PATCH",
+      headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        first_name: firstName || undefined,
+        last_name: lastName || undefined,
+        unsubscribed: false,
+        properties: { interest },
+      }),
+    });
     const segmentResponse = await fetch(
       `https://api.resend.com/contacts/${encodeURIComponent(email)}/segments/${encodeURIComponent(segmentId)}`,
       { method: "POST", headers: { Authorization: `Bearer ${apiKey}` } },
     );
-    if (segmentResponse.ok || segmentResponse.status === 409) {
+    if (updateResponse.ok && (segmentResponse.ok || segmentResponse.status === 409)) {
       return NextResponse.json({ message: "You’re on the list—thank you!" });
     }
   }

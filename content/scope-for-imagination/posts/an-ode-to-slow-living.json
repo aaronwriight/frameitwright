@@ -1,14 +1,13 @@
 {
   "slug": "an-ode-to-slow-living",
-  "title": "an ode to slow living",
-  "subtitle": "A first test of the journal format.",
+  "title": "scope for imagination",
+  "subtitle": "an ode to slow living",
   "date": "2026-06-20",
   "time": "19:28",
   "location": "Cambridge, MA",
   "entry": "0001",
   "tags": [
-    "test",
-    "slow living"
+    "thoughts"
   ],
-  "bodyHtml": "<p>This is a test entry for Scope for Imagination—a small placeholder while the journal finds its shape.</p>"
+  "bodyHtml": "<blockquote><p>Well, that is one of the things to find out sometime.<br />Isn't it splendid to think of all the things there are to find out about?<br />It just makes me feel glad to be alive - it's such an interesting world.<br />It wouldn't be half so interesting if we know all about everything, would it?<br />There'd be no scope for imagination then, would there?</p><p>- <cite>Anne of Green Gables</cite>, L. M. Montgomery</p></blockquote>"
 }

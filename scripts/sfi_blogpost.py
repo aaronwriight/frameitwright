@@ -239,13 +239,13 @@ def parse_arguments() -> argparse.Namespace:
     )
     parser.add_argument("--doc", required=True, type=Path, help="path to the source document")
     parser.add_argument("--title", required=True, help="post title")
-    parser.add_argument("--subtitle", default="", help="optional post subtitle")
+    parser.add_argument("--subtitle", required=True, help="post subtitle")
     parser.add_argument("--tags", default="", help="comma-separated tags, such as photography,science")
     parser.add_argument("--date", default=date.today().isoformat(), type=validate_date, help="publication date in YYYY-MM-DD format")
     parser.add_argument("--time", default=datetime.now().strftime("%H:%M"), type=validate_time, help="entry time in 24-hour HH:MM format")
     parser.add_argument("--location", required=True, help="location shown in the entry header")
     parser.add_argument("--entry", type=normalize_entry, help="entry number; defaults to the next available four-digit number")
-    parser.add_argument("--slug", help="optional URL slug; defaults to a slug made from the title")
+    parser.add_argument("--slug", help="optional URL slug; defaults to a slug made from the subtitle")
     parser.add_argument("--replace", action="store_true", help="replace a post with the same slug")
     parser.add_argument("--posts-dir", type=Path, default=DEFAULT_POSTS_DIR, help=argparse.SUPPRESS)
     parser.add_argument("--images-dir", type=Path, default=DEFAULT_IMAGES_DIR, help=argparse.SUPPRESS)
@@ -264,9 +264,9 @@ def main() -> int:
         print("error: --doc must be a .docx, .txt, .html, or .htm file", file=sys.stderr)
         return 1
 
-    slug = slugify(arguments.slug or arguments.title)
+    slug = slugify(arguments.slug or arguments.subtitle)
     if not slug:
-        print("error: the title or --slug must contain letters or numbers", file=sys.stderr)
+        print("error: the subtitle or --slug must contain letters or numbers", file=sys.stderr)
         return 1
 
     posts_directory = arguments.posts_dir.expanduser().resolve()

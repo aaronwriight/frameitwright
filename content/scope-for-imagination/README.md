@@ -6,8 +6,8 @@ Write a post in Word, plain text, or HTML, then run:
 python3 scripts/sfi_blogpost.py \
   --tags photography,science \
   --doc="/path/to/post.docx" \
-  --title="Post title" \
-  --subtitle="An optional subtitle" \
+  --title="scope for imagination" \
+  --subtitle="Post subtitle" \
   --location="Cambridge, MA"
 ```
 
@@ -24,7 +24,8 @@ The script creates one JSON file in `content/scope-for-imagination/posts/`. Imag
 Every post header follows the same structure:
 
 ```text
-scope for imagination: title | 6.20.26 • 19:28 | Cambridge, MA • 0001
+scope for imagination: post subtitle
+6.20.26 • 19:28 • Cambridge, MA • 0001
 ```
 
 Word headings, bold text, italics, hyperlinks, quotations, lists, paragraphs, line breaks, and embedded images receive basic HTML formatting. Add useful alt text to images in Word when possible; the script carries it into the website.

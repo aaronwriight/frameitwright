@@ -4,4 +4,8 @@ import type {StructureResolver} from 'sanity/structure'
 export const structure: StructureResolver = (S) =>
   S.list()
     .title('Content')
-    .items(S.documentTypeListItems())
+    .items([
+      S.documentTypeListItem('scopePost').title('Scope for Imagination Posts'),
+      S.divider(),
+      ...S.documentTypeListItems().filter((item) => item.getId() !== 'scopePost'),
+    ])

@@ -7,8 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "sfi:draft": "python3 scripts/sfi_draft.py",
     "sfi:new": "python3 scripts/sfi_blogpost.py",
-    "sfi:newsletter": "python3 scripts/sfi_newsletter.py"
+    "sfi:check": "python3 scripts/sfi_check_posts.py",
+    "sfi:newsletter": "python3 scripts/sfi_newsletter.py",
+    "sfi:upload": "python3 scripts/sfi_upload_post.py"
   },
   "dependencies": {
     "@portabletext/react": "^3.2.1",

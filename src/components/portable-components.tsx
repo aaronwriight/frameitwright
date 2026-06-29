@@ -1,7 +1,16 @@
 import { PortableTextComponents } from "@portabletext/react";
+import type { Image } from "sanity";
+import { urlForImage } from "@/sanity/lib/image";
 
 export const myPortableTextComponents: PortableTextComponents = {
-  types: {},
+  types: {
+    image: ({ value }) => {
+      const imageUrl = urlForImage(value as Image);
+      if (!imageUrl) return null;
+
+      return <img src={imageUrl} alt={typeof value.alt === "string" ? value.alt : ""} />;
+    },
+  },
   block: {
     h1: ({ children }) => <h1>{children}</h1>,
     h2: ({ children }) => <h2>{children}</h2>,

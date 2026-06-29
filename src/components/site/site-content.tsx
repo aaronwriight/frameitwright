@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+const contentMaxWidth = "64rem";
+
 const siteLinks = [
   ["cognitive science", "/cognitive-science"],
   ["photography", "/frame-it-wright-photography"],
@@ -15,6 +17,7 @@ const sectionLinks = {
     ["portfolio", "/frame-it-wright-photography/portfolio"],
     ["gallery", "/frame-it-wright-photography/gallery"],
     ["booking", "/frame-it-wright-photography/booking"],
+    ["mailing list", "/frame-it-wright-photography/mailing-list"],
     ["home", "/"],
   ],
   literature: [
@@ -48,7 +51,7 @@ export function SitePageShell({
         <SiteMenu />
         <article
           className="prose prose-stone w-full max-w-none self-start text-left text-sm dark:prose-invert prose-headings:font-serif prose-headings:lowercase prose-a:text-[#6f8200] prose-h2:text-sm prose-h2:font-medium prose-h2:tracking-normal prose-h2:normal-case"
-          style={{ maxWidth: "56rem" }}
+          style={{ maxWidth: contentMaxWidth }}
         >
           <h1 className="m-0 text-base font-medium lowercase tracking-widest">{title}</h1>
           <div className="mt-3 space-y-5">{children}</div>
@@ -117,7 +120,7 @@ export function SectionPageShell({
         <SectionMenu title={section} links={links} />
         <article
           className="prose prose-stone w-full max-w-none self-start text-left text-sm dark:prose-invert prose-headings:font-serif prose-headings:lowercase prose-a:text-[#6f8200] prose-h2:text-sm prose-h2:font-medium prose-h2:tracking-normal prose-h2:normal-case"
-          style={{ maxWidth: "56rem" }}
+          style={{ maxWidth: contentMaxWidth }}
         >
           {showTitle && <h1 className="m-0 text-base font-medium lowercase tracking-widest">{title}</h1>}
           <div className={showTitle ? "mt-3 space-y-5" : "space-y-5"}>{children}</div>

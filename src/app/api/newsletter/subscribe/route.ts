@@ -1,4 +1,5 @@
-import { NextResponse } from "next/server";
+import { jsonMessage } from "@/lib/api-response";
+import { emailPattern, upsertResendContact } from "@/lib/resend-contacts";
 
 const interests = new Set([
   "everything",
@@ -10,18 +11,16 @@ const interests = new Set([
   "faith",
 ]);
 
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
 export async function POST(request: Request) {
   let body: Record<string, unknown>;
 
   try {
     body = (await request.json()) as Record<string, unknown>;
   } catch {
-    return NextResponse.json({ message: "Please submit the form again." }, { status: 400 });
+    return jsonMessage("Please submit the form again.", 400);
   }
 
-  if (body.company) return NextResponse.json({ message: "You’re on the list—thank you!" });
+  if (body.company) return jsonMessage("You’re on the list—thank you!");
 
   const firstName = typeof body.firstName === "string" ? body.firstName.trim().slice(0, 80) : "";
   const lastName = typeof body.lastName === "string" ? body.lastName.trim().slice(0, 80) : "";
@@ -29,55 +28,26 @@ export async function POST(request: Request) {
   const interest = typeof body.interest === "string" && interests.has(body.interest) ? body.interest : "everything";
 
   if (!emailPattern.test(email) || email.length > 254) {
-    return NextResponse.json({ message: "Please enter a valid email address." }, { status: 400 });
+    return jsonMessage("Please enter a valid email address.", 400);
   }
   const apiKey = process.env.RESEND_API_KEY;
   const segmentId = process.env.RESEND_SFI_SEGMENT_ID;
   if (!apiKey || !segmentId) {
-    return NextResponse.json({ message: "Sign-up is being configured. Please check back soon." }, { status: 503 });
+    return jsonMessage("Sign-up is being configured. Please check back soon.", 503);
   }
 
-  const response = await fetch("https://api.resend.com/contacts", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
+  try {
+    await upsertResendContact({
+      apiKey,
+      segmentId,
       email,
-      first_name: firstName || undefined,
-      last_name: lastName || undefined,
-      unsubscribed: false,
-      properties: { interest },
-      segments: [{ id: segmentId }],
-    }),
-  });
-
-  if (response.ok) {
-    return NextResponse.json({ message: "You’re on the list—thank you!" });
-  }
-
-  if (response.status === 409) {
-    const updateResponse = await fetch(`https://api.resend.com/contacts/${encodeURIComponent(email)}`, {
-      method: "PATCH",
-      headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        first_name: firstName || undefined,
-        last_name: lastName || undefined,
-        unsubscribed: false,
-        properties: { interest },
-      }),
+      firstName,
+      lastName,
+      properties: { interest, source: "scope_for_imagination" },
     });
-    const segmentResponse = await fetch(
-      `https://api.resend.com/contacts/${encodeURIComponent(email)}/segments/${encodeURIComponent(segmentId)}`,
-      { method: "POST", headers: { Authorization: `Bearer ${apiKey}` } },
-    );
-    if (updateResponse.ok && (segmentResponse.ok || segmentResponse.status === 409)) {
-      return NextResponse.json({ message: "You’re on the list—thank you!" });
-    }
+    return jsonMessage("You’re on the list—thank you!");
+  } catch (error) {
+    console.error("Newsletter subscription failed", error);
+    return jsonMessage("I couldn’t add you just now. Please try again shortly.", 502);
   }
-
-  const error = (await response.json().catch(() => null)) as { message?: string } | null;
-  console.error("Newsletter subscription failed", response.status, error?.message || "Unknown Resend error");
-  return NextResponse.json({ message: "I couldn’t add you just now. Please try again shortly." }, { status: 502 });
 }

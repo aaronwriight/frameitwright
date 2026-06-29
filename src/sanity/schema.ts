@@ -6,7 +6,8 @@ import guide from "./schemas/guide";
 import mediaAsset from "./schemas/mediaAsset";
 import meta from "./schemas/meta";
 import page from "./schemas/page";
+import scopePost from "./schemas/scopePost";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blockContent, country, gallery, guide, mediaAsset, meta, page],
+  types: [blockContent, country, gallery, guide, mediaAsset, meta, page, scopePost],
 };

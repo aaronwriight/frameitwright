@@ -5,12 +5,17 @@ Edit `0002-life-update.html`, replacing or removing every bracketed prompt. The 
 Publish it with:
 
 ```sh
-python3 scripts/sfi_blogpost.py \
+pnpm sfi:new \
   --doc="content/scope-for-imagination/drafts/0002-life-update.html" \
   --title="scope for imagination" \
   --subtitle="life lately" \
   --tags="life update" \
-  --location="Cambridge, MA"
+  --location="Cambridge, MA" \
+  --entry=0002
 ```
 
-The script will assign entry `0002` automatically while `0001` is the only published post.
+Then validate and preview it:
+
+```sh
+pnpm sfi:check --entry=0002
+```

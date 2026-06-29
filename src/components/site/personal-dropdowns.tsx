@@ -34,22 +34,49 @@ export function PersonalDropdowns() {
 
       {openSection === "art" && (
         <div className="mt-5 space-y-5">
-          <p><strong>Artists &amp; Albums</strong></p>
-          <p>
-            <Link href="https://open.spotify.com/album/7EOvtHDxbltA0GNC4mvLAC"><em>The Definition</em></Link>, Jon Bellion |{" "}
-            <Link href="https://open.spotify.com/album/1HiN2YXZcc3EjmVZ4WjfBk"><em>Everybody</em></Link>, Logic |{" "}
-            <Link href="https://open.spotify.com/album/6B3LAqHoBKmSN9HLbyy0Ro"><em>Change of Scenery II</em></Link>, Quinn XCII |{" "}
-            <Link href="https://open.spotify.com/album/2UrPmvaX5X76LIzE6Cfiqu"><em>Brol La Suite</em></Link>, Angele |{" "}
-            <Link href="https://open.spotify.com/album/42SAgjuUp25kQT9I04ph1w"><em>Rainbow Mixtape</em></Link>, COIN |{" "}
-            <Link href="https://open.spotify.com/album/1k7iymTuRK6I4tvn0SX38I"><em>Songs For The Canyon</em></Link>, John Vincent III
-          </p>
-          <p><strong>Film</strong><br />La La Land | A Quiet Place | Good Will Hunting | Spirited Away</p>
-          <p>
-            <strong>Literature</strong><br />
-            <em>Anne of Green Gables</em>, Lucy Maud Montgomery | <em>The Haunting of Hill House</em>, Shirley Jackson |{" "}
-            <em>A Girl of the Limberlost</em>, Gene Stratton-Porter
-          </p>
-          <p><strong>Podcasts</strong><br />Pocket-sized science with hand-picked experts: <Link href="https://www.alieward.com">Ologies with Alie Ward</Link></p>
+          <div>
+            <p><strong>artists &amp; albums</strong></p>
+            <ul>
+              <li><Link href="https://open.spotify.com/album/7EOvtHDxbltA0GNC4mvLAC"><em>The Definition</em></Link>, Jon Bellion</li>
+              <li><Link href="https://open.spotify.com/album/1HiN2YXZcc3EjmVZ4WjfBk"><em>Everybody</em></Link>, Logic</li>
+              <li><Link href="https://open.spotify.com/album/6B3LAqHoBKmSN9HLbyy0Ro"><em>Change of Scenery II</em></Link>, Quinn XCII</li>
+              <li><Link href="https://open.spotify.com/album/2UrPmvaX5X76LIzE6Cfiqu"><em>Brol La Suite</em></Link>, Angele</li>
+              <li><Link href="https://open.spotify.com/album/42SAgjuUp25kQT9I04ph1w"><em>Rainbow Mixtape</em></Link>, COIN</li>
+              <li><Link href="https://open.spotify.com/album/1k7iymTuRK6I4tvn0SX38I"><em>Songs For The Canyon</em></Link>, John Vincent III</li>
+              <li><Link href="https://open.spotify.com/album/7eqdUZuRuOkurhzRWr6YUn"><em>True Love</em></Link>, Crystal Gayle</li>
+              <li><Link href="https://open.spotify.com/album/7FghAqLEF3Qvjv91tcwKTc"><em>From The Valley</em></Link>, Ilsey</li>
+              <li><Link href="https://open.spotify.com/album/4QszKQEmQxFd6km1COQaoI"><em>Devotion [Deluxe]</em></Link>, Sunday (1994)</li>
+              <li><Link href="https://open.spotify.com/album/4nYVLUVhQb9bD7l1QlYoFS"><em>Vice City Magic</em></Link>, Mustard Service</li>
+              <li><Link href="https://open.spotify.com/track/2aGNR8A6GnHqoM78T31CCC"><em>High Highs to Low Lows</em></Link>, Lolo Zouaï</li>
+            </ul>
+          </div>
+
+          <div>
+            <p><strong>film</strong></p>
+            <ul>
+              <li><i>La La Land</i></li>
+              <li><i>A Quiet Place</i></li>
+              <li><i>Good Will Hunting</i></li>
+              <li><i>Spirited Away</i></li>
+            </ul>
+          </div>
+
+          <div>
+            <p><strong>literature</strong></p>
+            <ul>
+              <li><em>Anne of Green Gables</em>, Lucy Maud Montgomery</li>
+              <li><em>The Haunting of Hill House</em>, Shirley Jackson</li>
+              <li><em>A Girl of the Limberlost</em>, Gene Stratton-Porter</li>
+              <li><em>I&apos;m Glad My Mom Died</em>, <Link href="https://www.jennettemccurdy.com/">Jennette McCurdy</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <p><strong>podcasts</strong></p>
+            <ul>
+              <li>Pocket-sized science with hand-picked experts: <Link href="https://www.alieward.com">Ologies with Alie Ward</Link></li>
+            </ul>
+          </div>
         </div>
       )}
 
@@ -61,25 +88,45 @@ export function PersonalDropdowns() {
       )}
 
       {openSection === "creative" && (
-        <ul className="mt-5">
-          <li>My talented friend and storyteller, Eden Harfield, at <Link href="https://www.edengracecreative.com">Eden Grace Creative</Link></li>
-          <li>Mesmerizing paintings and sketches done by my friend, <Link href="https://www.instagram.com/jameswellborn.art/">James Wellborn</Link></li>
-          <li>
-            <Link href="https://www.etsy.com/shop/PhebeSunriseStudio">Phebe Sunrise Studio</Link>, a Maine-inspired print shop by Kennebunk,
-            ME-based artist (and long-time friend), <Link href="https://www.instagram.com/phebegrant.art/">Phebe Grant</Link>
-          </li>
-          <li>Data visualization and information design by <Link href="https://www.cedricscherer.com">Cédric Scherer</Link></li>
-          <li>Transforming data into understanding: <Link href="https://nrennie.rbind.io">Nicola Rennie</Link></li>
-          <li>Thomas Brasington&apos;s stunning photographic journal, <Link href="https://www.thepostchaise.com">The Post Chaise</Link></li>
-          <li><Link href="https://www.instagram.com/newnativephotography/">New Native Photography</Link>: elopement and weddings, captured by Lindsey Tillman</li>
-          <li>A carousel of creative services, inspiration, and encouragement by my friend, <Link href="https://www.melissazaldivar.com/">Melissa Zaldivar Sawyer</Link></li>
-          <li>The independent design studio, <Link href="https://houseofdakh.com/">HOUSEOFDAKH</Link></li>
-          <li>Landscape photography by <Link href="https://www.frihead.ch/">Mathilde Rietsch</Link></li>
-          <li>Jon Bellion&apos;s <Link href="https://www.beautifulmindprojects.com/">Beautiful Mind Projects</Link></li>
-          <li>Classical composer, <Link href="https://www.christopherdenniscoleman.com/">Christopher Dennis Coleman</Link></li>
-          <li>The gripping memoir, <em>I&apos;m Glad My Mom Died</em>, from <Link href="https://www.jennettemccurdy.com/">Jennette McCurdy</Link></li>
-          <li>Keep up with Scope for Imagination through the <Link href="/scope-for-imagination/mailing-list">mailing list</Link></li>
-        </ul>
+        <div className="mt-5 space-y-5">
+          <div>
+            <p><strong>traditional &amp; digital media</strong></p>
+            <ul>
+              <li>
+                <Link href="https://www.etsy.com/shop/PhebeSunriseStudio">Phebe Sunrise Studio</Link>, a Maine-inspired print shop by Kennebunk,
+                ME-based artist (and long-time friend), <Link href="https://www.instagram.com/phebegrant.art/">Phebe Grant</Link>
+              </li>
+              <li>Mesmerizing paintings and sketches done by my friend, <Link href="https://www.instagram.com/jameswellborn.art/">James Wellborn</Link></li>
+              <li>A carousel of creative services, inspiration, and encouragement by my friend, <Link href="https://www.melissazaldivar.com/">Melissa Zaldivar Sawyer</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <p><strong>photography &amp; visual storytelling</strong></p>
+            <ul>
+              <li>My talented friend and storyteller, Eden Harfield, at <Link href="https://www.edengracecreative.com">Eden Grace Creative</Link></li>
+              <li><Link href="https://www.instagram.com/newnativephotography/">New Native Photography</Link>: elopement and weddings, captured by my friend, Lindsey Tillman</li>
+              <li>Stunning landscape photography by <Link href="https://www.frihead.ch/">Mathilde Rietsch</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <p><strong>data visualization</strong></p>
+            <ul>
+              <li>Data visualization and information design by <Link href="https://www.cedricscherer.com">Cédric Scherer</Link></li>
+              <li>Transforming data into understanding: <Link href="https://nrennie.rbind.io">Nicola Rennie</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <p><strong>independent projects &amp; design</strong></p>
+            <ul>
+              <li>The independent design studio, <Link href="https://houseofdakh.com/">HOUSEOFDAKH</Link></li>
+              <li>Jon Bellion&apos;s <Link href="https://www.beautifulmindprojects.com/">Beautiful Mind Projects</Link></li>
+              <li>Classical composer, <Link href="https://www.christopherdenniscoleman.com/">Christopher Dennis Coleman</Link></li>
+            </ul>
+          </div>
+        </div>
       )}
     </div>
   );

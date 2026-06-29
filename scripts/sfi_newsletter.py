@@ -8,12 +8,14 @@ import json
 import os
 import sys
 from pathlib import Path
+from urllib.parse import quote
 from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 NEWSLETTERS_DIR = PROJECT_ROOT / "content" / "scope-for-imagination" / "newsletters"
+SANITY_API_VERSION = "2024-02-22"
 
 
 def load_local_environment() -> None:
@@ -35,6 +37,106 @@ def parse_arguments() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def display_date(date_value: str) -> str:
+    year, month, day = date_value.split("-")
+    return f"{int(month)}.{int(day)}.{year[-2:]}"
+
+
+def newsletter_for_post(post: dict[str, object]) -> dict[str, str]:
+    title = str(post.get("title") or "scope for imagination")
+    subtitle = str(post.get("subtitle") or "").strip()
+    entry = str(post["entry"])
+    subject = str(post.get("subject") or "").strip() or f"{title}: {subtitle}"
+    preview_text = (
+        str(post.get("previewText") or "").strip()
+        or str(post.get("excerpt") or "").strip()
+        or f"A new Scope for Imagination entry: {subtitle}"
+    )
+    entry_url = "[[ENTRY_URL]]"
+    unsubscribe_url = "{{{RESEND_UNSUBSCRIBE_URL}}}"
+
+    email_html = (
+        "<p>Hello {{{contact.first_name|there}}},</p>"
+        "<p>There is a new entry in <em>Scope for Imagination</em>.</p>"
+        f"<h1>{html_escape(title)}</h1>"
+        f"<p><em>{html_escape(subtitle)}</em></p>"
+        f"<p>{display_date(str(post['date']))} • {html_escape(str(post['location']))} • {entry}</p>"
+        f'<p><a href="{entry_url}">Read entry {entry} →</a></p>'
+        f'<p><small><a href="{unsubscribe_url}">Unsubscribe</a></small></p>'
+    )
+    email_text = (
+        "Hello {{{contact.first_name|there}}},\n\n"
+        "There is a new entry in Scope for Imagination.\n\n"
+        f"{subject}\n{display_date(str(post['date']))} • {post['location']} • {entry}\n\n"
+        f"Read entry {entry}: {entry_url}\n\n"
+        f"Unsubscribe: {unsubscribe_url}\n"
+    )
+
+    return {
+        "entry": entry,
+        "name": f"SFI {entry}: {subtitle}",
+        "subject": subject,
+        "previewText": preview_text[:160],
+        "html": email_html,
+        "text": email_text,
+    }
+
+
+def html_escape(value: str) -> str:
+    return value.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
+
+
+def sanity_query(entry: str) -> dict[str, object] | None:
+    project_id = os.environ.get("NEXT_PUBLIC_SANITY_PROJECT_ID")
+    dataset = os.environ.get("NEXT_PUBLIC_SANITY_DATASET")
+    if not project_id or not dataset:
+        return None
+
+    api_version = os.environ.get("NEXT_PUBLIC_SANITY_API_VERSION") or SANITY_API_VERSION
+    query = (
+        f'*[_type == "scopePost" && status == "published" && entry == "{entry}"][0]{{'
+        'title,subtitle,entry,publishedAt,location,excerpt,'
+        '"subject": newsletter.subject,'
+        '"previewText": newsletter.previewText'
+        "}"
+    )
+    url = f"https://{project_id}.api.sanity.io/v{api_version}/data/query/{dataset}?query={quote(query)}"
+    request = Request(url, headers={"Accept": "application/json"})
+    token = os.environ.get("SANITY_API_READ_TOKEN")
+    if token:
+        request.add_header("Authorization", f"Bearer {token}")
+
+    with urlopen(request, timeout=30) as response:
+        payload = json.loads(response.read().decode("utf-8"))
+    post = payload.get("result")
+    if not isinstance(post, dict) or not post.get("entry") or not post.get("publishedAt") or not post.get("subtitle"):
+        return None
+
+    date_value = str(post["publishedAt"]).split("T", 1)[0]
+    return {
+        "title": post.get("title") or "scope for imagination",
+        "subtitle": post["subtitle"],
+        "date": date_value,
+        "location": post.get("location") or "Cambridge, MA",
+        "entry": post["entry"],
+        "excerpt": post.get("excerpt") or "",
+        "subject": post.get("subject") or "",
+        "previewText": post.get("previewText") or "",
+    }
+
+
+def load_newsletter_template(entry: str) -> dict[str, str] | None:
+    template_path = NEWSLETTERS_DIR / f"{entry}.json"
+    if template_path.exists():
+        return json.loads(template_path.read_text(encoding="utf-8"))
+
+    post = sanity_query(entry)
+    if post:
+        return newsletter_for_post(post)
+
+    return None
+
+
 def main() -> int:
     arguments = parse_arguments()
     entry = arguments.entry.zfill(4)
@@ -51,12 +153,15 @@ def main() -> int:
         print("error: set RESEND_API_KEY, RESEND_SFI_SEGMENT_ID, and SFI_NEWSLETTER_FROM", file=sys.stderr)
         return 1
 
-    template_path = NEWSLETTERS_DIR / f"{entry}.json"
-    if not template_path.exists():
-        print(f"error: newsletter template not found: {template_path}", file=sys.stderr)
+    template = load_newsletter_template(entry)
+    if not template:
+        print(
+            f"error: newsletter template not found for entry {entry}; "
+            "add a local template or configure Sanity env vars for a published post",
+            file=sys.stderr,
+        )
         return 1
 
-    template = json.loads(template_path.read_text(encoding="utf-8"))
     entry_url = f"{site_url}/scope-for-imagination/{entry}"
     payload = {
         "segment_id": segment_id,

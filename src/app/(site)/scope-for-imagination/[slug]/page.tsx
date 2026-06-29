@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { PortableText } from "@portabletext/react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { myPortableTextComponents } from "@/components/portable-components";
 import { JournalShell } from "@/components/site/site-content";
 import { SfiPostList } from "@/components/site/sfi-post-list";
 import { SfiPostHeader } from "@/components/site/sfi-post-header";
@@ -29,7 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   return {
     title: `${formatSfiPostTitle(post)} | aaron wright`,
-    description: `A Scope for Imagination journal entry by Aaron Wright.`,
+    description: post.excerpt || `A Scope for Imagination journal entry by Aaron Wright.`,
   };
 }
 
@@ -62,10 +64,13 @@ export default async function ScopeForImaginationEntryPage({ params }: { params:
 
         <SfiPostHeader post={post} large className="mt-10 border-b border-stone-300 pb-7 dark:border-stone-700" />
 
-        <div
-          className="prose prose-stone mt-10 max-w-none font-serif text-sm leading-7 dark:prose-invert prose-headings:font-serif prose-a:text-[#6f8200] prose-img:my-10 prose-img:w-full"
-          dangerouslySetInnerHTML={{ __html: post.bodyHtml }}
-        />
+        <div className="prose prose-stone mt-10 max-w-none font-serif text-sm leading-7 dark:prose-invert prose-headings:font-serif prose-a:text-[#6f8200] prose-img:my-10 prose-img:w-full">
+          {post.body ? (
+            <PortableText value={post.body} components={myPortableTextComponents} />
+          ) : (
+            <div dangerouslySetInnerHTML={{ __html: post.bodyHtml || "" }} />
+          )}
+        </div>
       </article>
     </JournalShell>
   );

@@ -4,18 +4,64 @@ import { FormEvent, useState } from "react";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
+type SelectOption = {
+  label: string;
+  value: string;
+};
+
+type ExtraField = {
+  name: string;
+  label: string;
+  type?: "text" | "textarea";
+  autoComplete?: string;
+  maxLength?: number;
+  placeholder?: string;
+};
+
+type NewsletterSignupProps = {
+  endpoint?: string;
+  successMessage?: string;
+  description?: string;
+  submitLabel?: string;
+  submittingLabel?: string;
+  interestName?: string;
+  interestLabel?: string;
+  interestOptions?: SelectOption[];
+  extraFields?: ExtraField[];
+};
+
+const defaultInterestOptions = [
+  { value: "everything", label: "everything" },
+  { value: "life updates", label: "life updates" },
+  { value: "musings", label: "musings" },
+  { value: "cognitive science", label: "cognitive science" },
+  { value: "photography", label: "photography" },
+  { value: "travel and adventure", label: "travel and adventure" },
+  { value: "faith", label: "faith" },
+];
+
 async function submitForm(endpoint: string, form: HTMLFormElement) {
   const response = await fetch(endpoint, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(Object.fromEntries(new FormData(form))),
   });
-  const result = (await response.json()) as { message?: string };
+  const result = (await response.json().catch(() => ({}))) as { message?: string };
   if (!response.ok) throw new Error(result.message || "Something went wrong. Please try again.");
   return result.message;
 }
 
-export function NewsletterSignup() {
+export function NewsletterSignup({
+  endpoint = "/api/newsletter/subscribe",
+  successMessage = "You’re on the list—thank you!",
+  description = "Occasional Scope for Imagination updates. Unsubscribe whenever you like.",
+  submitLabel = "join the list",
+  submittingLabel = "joining…",
+  interestName = "interest",
+  interestLabel = "most interested in",
+  interestOptions = defaultInterestOptions,
+  extraFields = [],
+}: NewsletterSignupProps) {
   const [subscribeStatus, setSubscribeStatus] = useState<FormStatus>("idle");
   const [subscribeMessage, setSubscribeMessage] = useState("");
   const [unsubscribeStatus, setUnsubscribeStatus] = useState<FormStatus>("idle");
@@ -27,7 +73,7 @@ export function NewsletterSignup() {
     setSubscribeStatus("submitting");
     setSubscribeMessage("");
     try {
-      setSubscribeMessage((await submitForm("/api/newsletter/subscribe", form)) || "You’re on the list—thank you!");
+      setSubscribeMessage((await submitForm(endpoint, form)) || successMessage);
       setSubscribeStatus("success");
       form.reset();
     } catch (error) {
@@ -74,24 +120,43 @@ export function NewsletterSignup() {
         </label>
 
         <label className="block space-y-1.5 text-xs text-stone-500">
-          <span className="block lowercase tracking-wider">most interested in</span>
-          <select name="interest" defaultValue="everything" className={fieldClass}>
-            <option value="everything">everything</option>
-            <option value="life updates">life updates</option>
-            <option value="musings">musings</option>
-            <option value="cognitive science">cognitive science</option>
-            <option value="photography">photography</option>
-            <option value="travel and adventure">travel and adventure</option>
-            <option value="faith">faith</option>
+          <span className="block lowercase tracking-wider">{interestLabel}</span>
+          <select name={interestName} defaultValue={interestOptions[0]?.value} className={fieldClass}>
+            {interestOptions.map((option) => (
+              <option key={option.value} value={option.value}>{option.label}</option>
+            ))}
           </select>
         </label>
+
+        {extraFields.map((field) => (
+          <label key={field.name} className="block space-y-1.5 text-xs text-stone-500">
+            <span className="block lowercase tracking-wider">{field.label}</span>
+            {field.type === "textarea" ? (
+              <textarea
+                name={field.name}
+                maxLength={field.maxLength}
+                placeholder={field.placeholder}
+                className={`${fieldClass} min-h-24 resize-y`}
+              />
+            ) : (
+              <input
+                name={field.name}
+                type="text"
+                autoComplete={field.autoComplete}
+                maxLength={field.maxLength}
+                placeholder={field.placeholder}
+                className={fieldClass}
+              />
+            )}
+          </label>
+        ))}
 
         <label className="hidden" aria-hidden="true">
           Company
           <input name="company" type="text" tabIndex={-1} autoComplete="off" />
         </label>
 
-        <p className="text-xs leading-5 text-stone-500">Occasional Scope for Imagination updates. Unsubscribe whenever you like.</p>
+        <p className="text-xs leading-5 text-stone-500">{description}</p>
 
         <div className="flex flex-wrap items-center gap-4">
           <button
@@ -99,7 +164,7 @@ export function NewsletterSignup() {
             disabled={subscribeStatus === "submitting"}
             className="border border-stone-400 px-4 py-2 font-serif text-xs lowercase tracking-widest text-stone-700 hover:border-stone-700 hover:text-stone-950 disabled:cursor-wait disabled:opacity-60 dark:border-stone-600 dark:text-stone-300 dark:hover:border-stone-300 dark:hover:text-stone-100"
           >
-            {subscribeStatus === "submitting" ? "joining…" : "join the list"}
+            {subscribeStatus === "submitting" ? submittingLabel : submitLabel}
           </button>
           {subscribeMessage && (
             <p role="status" className={`text-xs ${subscribeStatus === "error" ? "text-red-700 dark:text-red-400" : "text-stone-500"}`}>

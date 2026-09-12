@@ -12,6 +12,18 @@ The place catalogs live separately from the journal entries:
 - `parks/national-parks.json` contains all 63 parks and repeatable visit records. Unknown dates are stored as `null` rather than invented.
 - `travels/travels.json` contains the temporary international-travel branch. Every visit requires a date field; use `null` until the date is known, and add the optional `entrySlug` only when a full Venture entry exists.
 
+Log a new outing with the Venture CLI. It validates the entire affected catalog, assigns repeat-visit ordinals and new completion numbers, refuses accidental duplicate records, and writes atomically:
+
+```bash
+pnpm venture peak mount-osceola mount-osceola-east-peak --date 2026-09-07 --trip "Osceolas with Tali"
+pnpm venture park acadia --date 2026-09-07 --trip "Maine coast"
+pnpm venture travel norway --name "Norway" --region "Northern Europe" --latitude 60.472 --longitude 8.4689 --date 2026-09-07 --trip "Norway 2026"
+pnpm venture check
+```
+
+Targets may be catalog slugs or exact display names. Add `--entry-slug` once a related Venture story is published, and use `--dry-run` to preview a mutation. Peak `--note` and park `--field-note` values are public; keep private trip notes elsewhere.
+National-park chronology is never inferred: pass `--visit-number N` only when the park's first-visit order is known.
+
 Every ascent, park visit, travel visit, and standalone Venture entry also carries a `trip` field. Use `null` until the surrounding trip name is known.
 
 Every peak and park has a canonical page. The atlas marker and the corresponding row on the trails or parks index use that same URL; a place page can then link to one or more full journal entries through `entrySlug`.

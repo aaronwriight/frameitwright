@@ -83,11 +83,32 @@ export async function upsertResendContact({
     `https://api.resend.com/contacts/${encodeURIComponent(email)}/segments/${encodeURIComponent(segmentId)}`,
     { method: "POST", headers: { Authorization: `Bearer ${apiKey}` } },
   );
-
   if (updateResponse.ok && (segmentResponse.ok || segmentResponse.status === 409)) return;
 
   throw new ResendContactError(
     updateResponse.ok ? segmentResponse.status : updateResponse.status,
     updateResponse.ok ? await readResendError(segmentResponse) : await readResendError(updateResponse),
   );
+}
+
+export async function unsubscribeResendContact({
+  apiKey,
+  email,
+}: {
+  apiKey: string;
+  email: string;
+}) {
+  const response = await fetch(`https://api.resend.com/contacts/${encodeURIComponent(email)}`, {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ unsubscribed: true }),
+  });
+
+  // Do not reveal whether an address is present in the private contact list.
+  if (response.ok || response.status === 404) return;
+
+  throw new ResendContactError(response.status, await readResendError(response));
 }

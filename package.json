@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "writing": "python3 scripts/writing.py",
+    "venture": "python3 scripts/venture.py",
     "sfi:draft": "python3 scripts/sfi_draft.py",
     "sfi:new": "python3 scripts/sfi_blogpost.py",
     "sfi:check": "python3 scripts/sfi_check_posts.py",

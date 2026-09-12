@@ -47,13 +47,13 @@ Until the relevant variables are configured, each signup form safely reports tha
 - Confirm both segment IDs in Vercel match the intended Resend Segments.
 - Confirm all Contact Properties above exist before testing live submissions, otherwise Resend can reject contacts that include those properties.
 - Submit one test signup for each form and confirm the contact appears in the correct segment.
-- Use the in-page unsubscribe form with a test address and confirm the contact becomes globally unsubscribed in Resend.
+- Use either in-page unsubscribe form with a test address and confirm the contact becomes globally unsubscribed in Resend.
 
 ## Forms
 
 - `/scope-for-imagination/mailing-list` adds subscribers to `RESEND_SFI_SEGMENT_ID`.
-- `/frame-it-wright-photography/mailing-list` adds contacts to `RESEND_PHOTOGRAPHY_SEGMENT_ID` with lightweight intake properties for photography interest, location, and notes.
-- The unsubscribe form calls `/api/newsletter/unsubscribe` and sets the contact's global Resend unsubscribe status.
+- `/frame-it-wright-photography/mailing-list` adds contacts to `RESEND_PHOTOGRAPHY_SEGMENT_ID` and stores lightweight intake properties for photography interest, location, and notes.
+- Both unsubscribe forms call `/api/newsletter/unsubscribe` and set the contact's global Resend unsubscribe status, stopping every Broadcast from this Resend account.
 - The API routes always return JSON and opt out of caching, so browser/proxy errors should stay understandable in the form UI.
 
 ## Publishing And Email Workflow

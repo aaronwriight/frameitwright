@@ -1134,11 +1134,19 @@
       "range": "Sandwich Range",
       "prominenceFeet": 2040,
       "peakbaggerAscents": 2550,
-      "completed": false,
-      "completionNumber": null,
+      "completed": true,
+      "completionNumber": 24,
       "rating": null,
-      "timesHiked": 0,
-      "ascents": [],
+      "timesHiked": 1,
+      "ascents": [
+        {
+          "ordinal": 1,
+          "date": "2026-09-07",
+          "trip": "Osceola and East Osceola with Tali",
+          "note": null,
+          "entrySlug": null
+        }
+      ],
       "latitude": 44.0014572,
       "longitude": -71.5359105,
       "sourceUrl": "https://www.peakbagger.com/peak.aspx?pid=6992"
@@ -1530,11 +1538,19 @@
       "range": "Sandwich Range",
       "prominenceFeet": 344,
       "peakbaggerAscents": 2276,
-      "completed": false,
-      "completionNumber": null,
+      "completed": true,
+      "completionNumber": 25,
       "rating": null,
-      "timesHiked": 0,
-      "ascents": [],
+      "timesHiked": 1,
+      "ascents": [
+        {
+          "ordinal": 1,
+          "date": "2026-09-07",
+          "trip": "Osceola and East Osceola with Tali",
+          "note": null,
+          "entrySlug": null
+        }
+      ],
       "latitude": 44.006235,
       "longitude": -71.520622,
       "sourceUrl": "https://www.peakbagger.com/peak.aspx?pid=6991"

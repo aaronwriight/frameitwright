@@ -1,7 +1,5 @@
 import travelsJson from "../../content/venture/travels/travels.json";
 
-const EXPECTED_DESTINATION_COUNT = 3;
-const EXPECTED_DESTINATION_ORDER = ["iceland", "turkiye", "cambodia"] as const;
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const isoDatePattern = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -122,8 +120,8 @@ function parseCatalog(value: unknown): TravelsCatalog {
   if (!hasOnlyKeys(value, allowedKeys)) {
     throw new Error("Invalid travels catalog: unexpected property.");
   }
-  if (!Array.isArray(value.destinations) || value.destinations.length !== EXPECTED_DESTINATION_COUNT) {
-    throw new Error(`Travels catalog must contain exactly ${EXPECTED_DESTINATION_COUNT} destinations.`);
+  if (!Array.isArray(value.destinations)) {
+    throw new Error("Travels catalog must contain a destinations list.");
   }
 
   const destinations = Object.freeze(value.destinations.map(parseDestination));
@@ -135,14 +133,6 @@ function parseCatalog(value: unknown): TravelsCatalog {
     if (names.has(destination.name)) throw new Error(`Duplicate travel destination name: ${destination.name}.`);
     slugs.add(destination.slug);
     names.add(destination.name);
-  }
-
-  for (let index = 0; index < destinations.length; index += 1) {
-    if (destinations[index].slug !== EXPECTED_DESTINATION_ORDER[index]) {
-      throw new Error(
-        `Travel destinations must follow the editorial order: ${EXPECTED_DESTINATION_ORDER.join(" → ")}.`,
-      );
-    }
   }
 
   return Object.freeze({ destinations });

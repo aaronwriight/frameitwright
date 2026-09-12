@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { AlbumCarousel } from "@/components/site/album-carousel";
 
 type Section = "art" | "communities" | "creative";
 
@@ -34,33 +35,7 @@ export function PersonalDropdowns() {
 
       {openSection === "art" && (
         <div className="mt-5 space-y-5">
-          <div>
-            <p><strong>artists &amp; albums</strong></p>
-            <ul>
-              <li><Link href="https://open.spotify.com/album/7EOvtHDxbltA0GNC4mvLAC"><em>The Definition</em></Link>, Jon Bellion</li>
-              <li><Link href="https://open.spotify.com/album/1HiN2YXZcc3EjmVZ4WjfBk"><em>Everybody</em></Link>, Logic</li>
-              <li><Link href="https://open.spotify.com/album/6B3LAqHoBKmSN9HLbyy0Ro"><em>Change of Scenery II</em></Link>, Quinn XCII</li>
-              <li><Link href="https://open.spotify.com/album/2UrPmvaX5X76LIzE6Cfiqu"><em>Brol La Suite</em></Link>, Angele</li>
-              <li><Link href="https://open.spotify.com/album/42SAgjuUp25kQT9I04ph1w"><em>Rainbow Mixtape</em></Link>, COIN</li>
-              <li><Link href="https://open.spotify.com/album/1k7iymTuRK6I4tvn0SX38I"><em>Songs For The Canyon</em></Link>, John Vincent III</li>
-              <li><Link href="https://open.spotify.com/album/7eqdUZuRuOkurhzRWr6YUn"><em>True Love</em></Link>, Crystal Gayle</li>
-              <li><Link href="https://open.spotify.com/album/7FghAqLEF3Qvjv91tcwKTc"><em>From The Valley</em></Link>, Ilsey</li>
-              <li><Link href="https://open.spotify.com/album/4QszKQEmQxFd6km1COQaoI"><em>Devotion [Deluxe]</em></Link>, Sunday (1994)</li>
-              <li><Link href="https://open.spotify.com/album/4nYVLUVhQb9bD7l1QlYoFS"><em>Vice City Magic</em></Link>, Mustard Service</li>
-              <li><Link href="https://open.spotify.com/track/2aGNR8A6GnHqoM78T31CCC"><em>High Highs to Low Lows</em></Link>, Lolo Zouaï</li>
-              <li><Link href="https://open.spotify.com/album/27SQuR7jPiGkJJXl8njEqY"><em>Jean</em></Link>, Yebba</li>
-              <li><Link href="https://open.spotify.com/album/5czKm6HdhwZ8AXFLpcWxTE"><em>Cape God [Deluxe]</em></Link>, Allie X</li>
-              <li><Link href="https://open.spotify.com/album/5RUma3H9uzDLXxwT7JzTel"><em>Essex Honey</em></Link>, Blood Orange</li>
-              <li><Link href="https://open.spotify.com/album/25ktFe8igqIwv9aRbkdnTS"><em>Desire, I Want To Turn Into You: Everasking Edition</em></Link>, Caroline Polachek</li>
-              <li><Link href="https://open.spotify.com/album/4f3yGbwInBCKTfop0dLrkC"><em>I Miss You, I Do</em></Link>, Arny Margret</li>
-              <li><Link href="https://open.spotify.com/album/4ByOqAhq3BuBo0sN54XkEQ"><em>Good at Falling</em></Link>, The Japanese House</li>
-              <li><Link href="https://open.spotify.com/album/35tILwApqYtN9fTJq2v7M3"><em>brent iii</em></Link>, Jeremy Zucker &amp; Chelsea Cutler</li>
-              <li><Link href="https://open.spotify.com/album/0vrIRUpI2gB2QqOUQEG05v"><em>Grand Romantic</em></Link>, Nate Ruess</li>
-              <li><Link href="https://open.spotify.com/album/2eN97mVJc9gsJqmHnHpInv"><em>Honey</em></Link>, Samia</li>
-              <li><Link href="https://open.spotify.com/album/37ABUtLPqktcopsBJ7jmXT"><em>Oh Wonder</em></Link>, Oh Wonder</li>
-              <li><Link href="https://open.spotify.com/album/79thwyFL6Uo6rgTp3YWEAf"><em>Women In Music, Pt. III (Expanded Edition)</em></Link>, HAIM</li>
-            </ul>
-          </div>
+          <AlbumCarousel />
 
           <div>
             <p><strong>film</strong></p>

@@ -1,5 +1,5 @@
 import { jsonMessage } from "@/lib/api-response";
-import { emailPattern } from "@/lib/resend-contacts";
+import { emailPattern, unsubscribeResendContact } from "@/lib/resend-contacts";
 
 export async function POST(request: Request) {
   let body: Record<string, unknown>;
@@ -19,17 +19,11 @@ export async function POST(request: Request) {
     return jsonMessage("Unsubscribe is being configured. Please check back soon.", 503);
   }
 
-  const response = await fetch(`https://api.resend.com/contacts/${encodeURIComponent(email)}`, {
-    method: "PATCH",
-    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ unsubscribed: true }),
-  });
-
-  if (response.ok || response.status === 404) {
+  try {
+    await unsubscribeResendContact({ apiKey, email });
     return jsonMessage("You’ve been unsubscribed.");
+  } catch (error) {
+    console.error("Newsletter unsubscribe failed", error);
+    return jsonMessage("I couldn’t unsubscribe you just now. Please try again shortly.", 502);
   }
-
-  const error = (await response.json().catch(() => null)) as { message?: string } | null;
-  console.error("Newsletter unsubscribe failed", response.status, error?.message || "Unknown Resend error");
-  return jsonMessage("I couldn’t unsubscribe you just now. Please try again shortly.", 502);
 }

@@ -11,33 +11,39 @@ export default function CognitiveScienceAboutPage() {
   return (
     <ScienceShell title="about">
       <p>
-        <strong>   
+        <strong>
           To me, science is <em>mentorship</em>.
         </strong>
       </p>
       <p>
-        I&apos;ve been privileged to experience several wonderful scholars&apos; investments, and my scientific lens is as much a product of their
+        I&apos;ve been privileged to work with and learn from several wonderful scholars, and my scientific lens is as much a product of their
         wisdom and prompting as it is formed around my own desire to mentor future scholars.
       </p>
       <ul>
         <li>
-          Beginning in the Fall, I will join the{" "}
+          Most recently, I joined the{" "}
           <Link href="https://fpetzschner.com/lab/">Psychiatry, Embodiment and Computation (PEAC) Lab</Link>, within the Department of{" "}
-          <Link href="https://copsy.brown.edu">Cognitive and Psychological Sciences</Link> and{" "}
-          <Link href="https://carney.brown.edu">Carney Institute for Brain Science</Link> at Brown. I&apos;m thrilled to work with{" "}
+          <Link href="https://copsy.brown.edu">Cognitive and Psychological Sciences (CoPsy)</Link> and{" "}
+          <Link href="https://carney.brown.edu">Carney Institute for Brain Science</Link> at Brown. I&apos;m thrilled to be working with{" "}
           <Link href="https://fpetzschner.com/about/">Frederike Petzschner</Link> and her team to study embodied intelligence –– how brain-body
-          interactions shape learning, emotion, and psychiatric vulnerability –– using computational modeling, neuroimagining (EEG, fMRI), and
+          interactions shape learning, emotion, and psychiatric vulnerability –– using computational modeling, neuroimaging (EEG, fMRI), and
           behavioral methods.
+          <ul>
+            <li>
+              I&apos;m also excited to continue working with Oriel&apos;s group, and to extend our work to consider how individuals&apos; affective experiences
+              unfold over time.
+            </li>
+          </ul>
         </li>
         <li>
-          Currently, I&apos;m &quot;<em>discovering how minds and brains create language</em>&quot; as a{" "}
+          Just beforehand, I spent time &quot;<em>discovering how minds and brains create language</em>&quot; as a{" "}
           <Link href="https://bcs.mit.edu/postbac1">post-baccalaureate research assistant</Link> in{" "}
-          <Link href="https://www.evlab.mit.edu/about-ev">Evelina Fedorenko&apos;s</Link> language lab at MIT. I&apos;ve been working with{" "}
+          <Link href="https://www.evlab.mit.edu/about-ev">Evelina Fedorenko&apos;s</Link> language lab at MIT. Here I&apos;ve worked with{" "}
           <Link href="https://a-wolna.github.io">Agata Wolna</Link>, using fMRI and other techniques to explore the neural signatures of language
           processing, including the broader language network and how monolinguals and bilinguals differ in production and comprehension.
           <ul>
             <li>
-              Simultaneously, I&apos;ve been in collaboration with <Link href="https://yiyangteoh.com">Yi Yang Teoh</Link> in{" "}
+              Simultaneously, I began collaborating with <Link href="https://yiyangteoh.com">Yi Yang Teoh</Link> in{" "}
               <Link href="https://www.feldmanhalllab.com">Oriel FeldmanHall&apos;s lab</Link> at Brown, thinking about individual differences in emotion
               semantics and their implications for behavioral wellbeing and decision making.
             </li>

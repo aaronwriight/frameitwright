@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 const albums = [
   { title: "Liquorice", artist: "Hatchie", href: "https://open.spotify.com/album/0dtHFmAZG3WuxrpxxGoXlV", artwork: "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02ba8cfa0912d3ce0b674c8f5f" },
@@ -33,48 +33,57 @@ const albums = [
 
 export function AlbumCarousel() {
   const trackRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-
-  const updateScrollState = useCallback(() => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    setCanScrollLeft(track.scrollLeft > 2);
-    setCanScrollRight(track.scrollLeft + track.clientWidth < track.scrollWidth - 2);
-  }, []);
+  const firstSetRef = useRef<HTMLDivElement>(null);
+  const pausedRef = useRef(false);
 
   useEffect(() => {
     const track = trackRef.current;
-    if (!track) return;
+    const firstSet = firstSetRef.current;
+    if (!track || !firstSet) return;
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let animationFrame = 0;
+    let previousTime = performance.now();
+
+    const normalizePosition = () => {
+      const loopWidth = firstSet.offsetWidth;
+      if (!loopWidth) return;
+
+      if (track.scrollLeft >= loopWidth) track.scrollLeft -= loopWidth;
+      if (track.scrollLeft < 0) track.scrollLeft += loopWidth;
+    };
+
+    const animate = (currentTime: number) => {
+      const elapsed = Math.min(currentTime - previousTime, 50);
+      previousTime = currentTime;
+
+      if (!pausedRef.current && !reducedMotion.matches) {
+        track.scrollLeft += elapsed * 0.026;
+        normalizePosition();
+      }
+
+      animationFrame = window.requestAnimationFrame(animate);
+    };
 
     const browseWithWheel = (event: WheelEvent) => {
       const movement = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
-      const atStart = track.scrollLeft <= 0;
-      const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
-
-      if ((movement < 0 && atStart) || (movement > 0 && atEnd)) return;
+      const loopWidth = firstSet.offsetWidth;
+      if (!movement || !loopWidth) return;
 
       event.preventDefault();
+      if (movement < 0 && track.scrollLeft <= 0) track.scrollLeft += loopWidth;
       track.scrollLeft += movement;
+      normalizePosition();
     };
 
-    updateScrollState();
     track.addEventListener("wheel", browseWithWheel, { passive: false });
-    window.addEventListener("resize", updateScrollState);
+    animationFrame = window.requestAnimationFrame(animate);
 
     return () => {
       track.removeEventListener("wheel", browseWithWheel);
-      window.removeEventListener("resize", updateScrollState);
+      window.cancelAnimationFrame(animationFrame);
     };
-  }, [updateScrollState]);
-
-  const moveCarousel = (direction: -1 | 1) => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    track.scrollBy({ left: direction * Math.max(track.clientWidth * 0.75, 280), behavior: "smooth" });
-  };
+  }, []);
 
   return (
     <section aria-labelledby="favorite-albums-heading" className="group/carousel">
@@ -82,57 +91,56 @@ export function AlbumCarousel() {
         <p id="favorite-albums-heading">
           <strong>artists &amp; albums</strong>
         </p>
-        <div className="flex items-center gap-2">
-          <p className="m-0 text-xs text-stone-400 transition-colors group-hover/carousel:text-stone-600 dark:group-hover/carousel:text-stone-300">
-            scroll to browse
-          </p>
-          <div className="flex gap-1 opacity-100 transition-opacity sm:opacity-0 sm:group-hover/carousel:opacity-100 sm:group-focus-within/carousel:opacity-100">
-            <button
-              type="button"
-              aria-label="Previous albums"
-              disabled={!canScrollLeft}
-              onClick={() => moveCarousel(-1)}
-              className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border border-stone-300 bg-white text-xs text-stone-600 transition-colors hover:border-[#859900] hover:text-[#6f8200] disabled:cursor-default disabled:opacity-30 dark:border-stone-700 dark:bg-stone-950 dark:text-stone-300"
-            >
-              ←
-            </button>
-            <button
-              type="button"
-              aria-label="Next albums"
-              disabled={!canScrollRight}
-              onClick={() => moveCarousel(1)}
-              className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border border-stone-300 bg-white text-xs text-stone-600 transition-colors hover:border-[#859900] hover:text-[#6f8200] disabled:cursor-default disabled:opacity-30 dark:border-stone-700 dark:bg-stone-950 dark:text-stone-300"
-            >
-              →
-            </button>
-          </div>
-        </div>
+        <p className="m-0 text-xs text-stone-400 transition-colors group-hover/carousel:text-stone-600 dark:group-hover/carousel:text-stone-300">
+          scroll to browse
+        </p>
       </div>
       <div
         ref={trackRef}
-        onScroll={updateScrollState}
-        className="-mx-1 mt-2 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth px-1 pb-3 [scrollbar-color:#a8a29e_transparent] [scrollbar-width:thin]"
+        onMouseEnter={() => {
+          pausedRef.current = true;
+        }}
+        onMouseLeave={() => {
+          pausedRef.current = false;
+        }}
+        onFocusCapture={() => {
+          pausedRef.current = true;
+        }}
+        onBlurCapture={() => {
+          pausedRef.current = false;
+        }}
+        className="-mx-1 mt-2 flex overflow-x-auto px-1 pb-3 [scrollbar-color:#a8a29e_transparent] [scrollbar-width:thin]"
       >
-        {albums.map((album) => (
-          <Link
-            key={album.href}
-            href={album.href}
-            aria-label={`${album.title} by ${album.artist} on Spotify`}
-            className="group w-28 shrink-0 snap-start no-underline hover:no-underline sm:w-32"
+        {[false, true].map((duplicate) => (
+          <div
+            key={duplicate ? "duplicate" : "original"}
+            ref={duplicate ? undefined : firstSetRef}
+            aria-hidden={duplicate || undefined}
+            className="flex shrink-0 gap-3 pr-3"
           >
-            <Image
-              src={album.artwork}
-              alt={`${album.title} album cover`}
-              width={256}
-              height={256}
-              sizes="(min-width: 640px) 128px, 112px"
-              className="m-0 aspect-square w-full rounded-sm border border-stone-200 object-cover transition-opacity group-hover:opacity-80 dark:border-stone-700"
-            />
-            <span className="mt-2 block text-xs leading-4 text-stone-900 group-hover:text-[#6f8200] dark:text-stone-100">
-              <em>{album.title}</em>
-            </span>
-            <span className="mt-0.5 block text-[0.7rem] leading-4 text-stone-500">{album.artist}</span>
-          </Link>
+            {albums.map((album) => (
+              <Link
+                key={album.href}
+                href={album.href}
+                aria-label={duplicate ? undefined : `${album.title} by ${album.artist} on Spotify`}
+                tabIndex={duplicate ? -1 : undefined}
+                className="group w-28 shrink-0 no-underline hover:no-underline sm:w-32"
+              >
+                <Image
+                  src={album.artwork}
+                  alt={duplicate ? "" : `${album.title} album cover`}
+                  width={256}
+                  height={256}
+                  sizes="(min-width: 640px) 128px, 112px"
+                  className="m-0 aspect-square w-full rounded-sm border border-stone-200 object-cover transition-opacity group-hover:opacity-80 dark:border-stone-700"
+                />
+                <span className="mt-2 block text-xs leading-4 text-stone-900 group-hover:text-[#6f8200] dark:text-stone-100">
+                  <em>{album.title}</em>
+                </span>
+                <span className="mt-0.5 block text-[0.7rem] leading-4 text-stone-500">{album.artist}</span>
+              </Link>
+            ))}
+          </div>
         ))}
       </div>
     </section>

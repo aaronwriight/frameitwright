@@ -150,6 +150,34 @@ a:hover {
   margin-bottom: 0;
 }
 
+.album-carousel-track {
+  scrollbar-color: transparent transparent;
+  scrollbar-width: thin;
+}
+
+.album-carousel-track::-webkit-scrollbar {
+  height: 5px;
+}
+
+.album-carousel-track::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.album-carousel-track::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 9999px;
+}
+
+.album-carousel-track:hover,
+.album-carousel-track:focus-within {
+  scrollbar-color: #a8a29e transparent;
+}
+
+.album-carousel-track:hover::-webkit-scrollbar-thumb,
+.album-carousel-track:focus-within::-webkit-scrollbar-thumb {
+  background: #a8a29e;
+}
+
 /* @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 

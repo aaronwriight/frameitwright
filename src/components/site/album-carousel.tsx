@@ -118,7 +118,7 @@ export function AlbumCarousel() {
           positionRef.current = trackRef.current?.scrollLeft ?? positionRef.current;
           pausedRef.current = false;
         }}
-        className="-mx-1 mt-2 flex overflow-x-auto px-1 pb-3 [scrollbar-color:#a8a29e_transparent] [scrollbar-width:thin]"
+        className="album-carousel-track -mx-1 mt-2 flex overflow-x-auto px-1 pb-3"
       >
         {[false, true].map((duplicate) => (
           <div

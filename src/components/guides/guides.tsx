@@ -58,7 +58,7 @@ export default function Guides({ guides }: { guides: SanityGuide[] }) {
       })}
         </section>
       </div>
-      <p className="-ml-4 mt-16 w-[calc(100%+1rem)] max-w-3xl text-right font-serif text-[0.7rem] italic leading-[1.15rem] sm:ml-auto sm:mt-14 sm:w-auto sm:text-sm sm:leading-relaxed md:absolute md:-bottom-16 md:right-6 md:mt-0">
+      <p className="ml-auto mt-16 w-full max-w-3xl text-right font-serif text-[0.65rem] italic leading-[1.1rem] sm:mt-14 sm:w-auto sm:text-sm sm:leading-relaxed md:absolute md:-bottom-16 md:right-6 md:mt-0">
         Well, that is one of the things to find out sometime.
         <br />
         Isn&apos;t it splendid to think of all the things there are to find out about?
@@ -70,7 +70,7 @@ export default function Guides({ guides }: { guides: SanityGuide[] }) {
         There&apos;d be no{"\u00a0"}<b>scope for imagination</b>{"\u00a0"}then, would there?
         <br />
         <br />
-        <span className="block text-right font-serif text-[0.65rem] italic leading-relaxed text-stone-450 sm:text-xs">
+        <span className="block text-right font-serif text-[0.625rem] italic leading-relaxed text-stone-450 sm:text-xs">
           - Anne of Green Gables, L. M. Montgomery
         </span>
       </p>

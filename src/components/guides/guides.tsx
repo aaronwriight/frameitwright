@@ -24,7 +24,7 @@ export default function Guides({ guides }: { guides: SanityGuide[] }) {
     });
 
   return (
-    <main className="container relative mx-auto flex-1 px-6 py-11">
+    <main className="container relative mx-auto flex-1 px-7 py-12 sm:px-6 sm:py-11">
       <div className="grid items-start gap-y-8 md:grid-cols-[13rem_minmax(0,1fr)] md:gap-x-16">
         <SiteMenu />
         <section className="w-full self-start space-y-8 text-left">
@@ -58,7 +58,7 @@ export default function Guides({ guides }: { guides: SanityGuide[] }) {
       })}
         </section>
       </div>
-      <p className="ml-auto mt-14 max-w-3xl text-right font-serif text-xs italic leading-5 sm:text-sm sm:leading-relaxed md:absolute md:-bottom-16 md:right-6 md:mt-0">
+      <p className="-ml-4 mt-16 w-[calc(100%+1rem)] max-w-3xl text-right font-serif text-[0.7rem] italic leading-[1.15rem] sm:ml-auto sm:mt-14 sm:w-auto sm:text-sm sm:leading-relaxed md:absolute md:-bottom-16 md:right-6 md:mt-0">
         Well, that is one of the things to find out sometime.
         <br />
         Isn&apos;t it splendid to think of all the things there are to find out about?
@@ -67,10 +67,10 @@ export default function Guides({ guides }: { guides: SanityGuide[] }) {
         <br />
         It wouldn&apos;t be half so interesting if we know all about everything, would it?
         <br />
-        There&apos;d be no <b>scope for imagination</b> then, would there?
+        There&apos;d be no{"\u00a0"}<b>scope for imagination</b>{"\u00a0"}then, would there?
         <br />
         <br />
-        <span className="block text-right font-serif text-xs italic leading-relaxed text-stone-450">
+        <span className="block text-right font-serif text-[0.65rem] italic leading-relaxed text-stone-450 sm:text-xs">
           - Anne of Green Gables, L. M. Montgomery
         </span>
       </p>

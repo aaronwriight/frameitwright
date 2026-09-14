@@ -58,7 +58,7 @@ export default function Guides({ guides }: { guides: SanityGuide[] }) {
       })}
         </section>
       </div>
-      <p className="ml-auto mt-14 max-w-3xl text-right font-serif text-xs italic leading-5 sm:text-sm sm:leading-relaxed md:absolute md:-bottom-16 md:right-6 md:mt-0">
+      <p className="ml-auto mt-14 max-w-3xl text-pretty text-right font-serif text-xs italic leading-5 sm:text-sm sm:leading-relaxed md:absolute md:-bottom-16 md:right-6 md:mt-0">
         Well, that is one of the things to find out sometime.
         <br />
         Isn&apos;t it splendid to think of all the things there are to find out about?

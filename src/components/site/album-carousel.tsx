@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const albums = [
   { title: "Liquorice", artist: "Hatchie", href: "https://open.spotify.com/album/0dtHFmAZG3WuxrpxxGoXlV", artwork: "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02ba8cfa0912d3ce0b674c8f5f" },
@@ -29,13 +32,87 @@ const albums = [
 ] as const;
 
 export function AlbumCarousel() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const updateScrollState = useCallback(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    setCanScrollLeft(track.scrollLeft > 2);
+    setCanScrollRight(track.scrollLeft + track.clientWidth < track.scrollWidth - 2);
+  }, []);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const browseWithWheel = (event: WheelEvent) => {
+      const movement = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+      const atStart = track.scrollLeft <= 0;
+      const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
+
+      if ((movement < 0 && atStart) || (movement > 0 && atEnd)) return;
+
+      event.preventDefault();
+      track.scrollLeft += movement;
+    };
+
+    updateScrollState();
+    track.addEventListener("wheel", browseWithWheel, { passive: false });
+    window.addEventListener("resize", updateScrollState);
+
+    return () => {
+      track.removeEventListener("wheel", browseWithWheel);
+      window.removeEventListener("resize", updateScrollState);
+    };
+  }, [updateScrollState]);
+
+  const moveCarousel = (direction: -1 | 1) => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    track.scrollBy({ left: direction * Math.max(track.clientWidth * 0.75, 280), behavior: "smooth" });
+  };
+
   return (
-    <section aria-labelledby="favorite-albums-heading">
+    <section aria-labelledby="favorite-albums-heading" className="group/carousel">
       <div className="flex items-baseline justify-between gap-4">
-        <p id="favorite-albums-heading"><strong>artists &amp; albums</strong></p>
-        <p className="m-0 text-xs text-stone-400">scroll to browse</p>
+        <p id="favorite-albums-heading">
+          <strong>artists &amp; albums</strong>
+        </p>
+        <div className="flex items-center gap-2">
+          <p className="m-0 text-xs text-stone-400 transition-colors group-hover/carousel:text-stone-600 dark:group-hover/carousel:text-stone-300">
+            scroll to browse
+          </p>
+          <div className="flex gap-1 opacity-100 transition-opacity sm:opacity-0 sm:group-hover/carousel:opacity-100 sm:group-focus-within/carousel:opacity-100">
+            <button
+              type="button"
+              aria-label="Previous albums"
+              disabled={!canScrollLeft}
+              onClick={() => moveCarousel(-1)}
+              className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border border-stone-300 bg-white text-xs text-stone-600 transition-colors hover:border-[#859900] hover:text-[#6f8200] disabled:cursor-default disabled:opacity-30 dark:border-stone-700 dark:bg-stone-950 dark:text-stone-300"
+            >
+              ←
+            </button>
+            <button
+              type="button"
+              aria-label="Next albums"
+              disabled={!canScrollRight}
+              onClick={() => moveCarousel(1)}
+              className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border border-stone-300 bg-white text-xs text-stone-600 transition-colors hover:border-[#859900] hover:text-[#6f8200] disabled:cursor-default disabled:opacity-30 dark:border-stone-700 dark:bg-stone-950 dark:text-stone-300"
+            >
+              →
+            </button>
+          </div>
+        </div>
       </div>
-      <div className="-mx-1 mt-2 flex snap-x snap-mandatory gap-3 overflow-x-auto px-1 pb-3 [scrollbar-color:#a8a29e_transparent] [scrollbar-width:thin]">
+      <div
+        ref={trackRef}
+        onScroll={updateScrollState}
+        className="-mx-1 mt-2 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth px-1 pb-3 [scrollbar-color:#a8a29e_transparent] [scrollbar-width:thin]"
+      >
         {albums.map((album) => (
           <Link
             key={album.href}

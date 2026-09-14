@@ -58,19 +58,15 @@ export default function Guides({ guides }: { guides: SanityGuide[] }) {
       })}
         </section>
       </div>
-      <p className="ml-auto mt-14 max-w-3xl text-pretty text-right font-serif text-xs italic leading-5 sm:text-sm sm:leading-relaxed md:absolute md:-bottom-16 md:right-6 md:mt-0">
-        Well, that is one of the things to find out sometime.
-        <br />
-        Isn&apos;t it splendid to think of all the things there are to find out about?
-        <br />
-        It just makes me feel glad to be alive - it&apos;s such an interesting world.
-        <br />
-        It wouldn&apos;t be half so interesting if we know all about everything, would it?
-        <br />
-        There&apos;d be no <b>scope for imagination</b> then, would there?
-        <br />
-        <br />
-        <span className="block text-right font-serif text-xs italic leading-relaxed text-stone-450">
+      <p className="ml-auto mt-14 w-full max-w-3xl text-right font-serif text-xs italic leading-5 sm:text-sm sm:leading-relaxed md:absolute md:-bottom-16 md:right-6 md:mt-0 md:w-[calc(100%-3rem)]">
+        <span className="block text-balance">Well, that is one of the things to find out sometime.</span>
+        <span className="block text-balance">Isn&apos;t it splendid to think of all the things there are to find out about?</span>
+        <span className="block text-balance">It just makes me feel glad to be alive - it&apos;s such an interesting world.</span>
+        <span className="block text-balance">It wouldn&apos;t be half so interesting if we know all about everything, would it?</span>
+        <span className="block text-balance">
+          There&apos;d be no <b>scope for imagination</b> then, would there?
+        </span>
+        <span className="mt-5 block text-right font-serif text-xs italic leading-relaxed text-stone-450">
           - Anne of Green Gables, L. M. Montgomery
         </span>
       </p>

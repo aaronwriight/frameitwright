@@ -59,7 +59,7 @@ export default async function ScopeForImaginationEntryPage({ params }: { params:
 
   return (
     <JournalShell title={post.title} showTitle={false} years={years}>
-      <div className="w-full max-w-3xl">
+      <div className="w-full">
         <div className="not-prose">
           <Link href={`/scope-for-imagination/${postYear}`} className="text-xs lowercase tracking-widest text-stone-500">
             ← {postYear}
@@ -68,7 +68,7 @@ export default async function ScopeForImaginationEntryPage({ params }: { params:
           <SfiPostHeader post={post} large className="mt-10 border-b border-stone-300 pb-7 dark:border-stone-700" />
         </div>
 
-        <div className="prose prose-stone mt-10 max-w-none font-serif text-sm leading-7 dark:prose-invert prose-headings:font-serif prose-a:text-[#6f8200] prose-img:my-10 prose-img:w-full">
+        <div className="prose prose-stone mt-10 w-full max-w-3xl font-serif text-sm leading-7 dark:prose-invert prose-headings:font-serif prose-a:text-[#6f8200] prose-img:my-10 prose-img:w-full">
           {post.body ? (
             <PortableText value={post.body} components={myPortableTextComponents} />
           ) : (

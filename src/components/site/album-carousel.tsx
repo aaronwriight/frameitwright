@@ -35,31 +35,32 @@ export function AlbumCarousel() {
   const trackRef = useRef<HTMLDivElement>(null);
   const firstSetRef = useRef<HTMLDivElement>(null);
   const pausedRef = useRef(false);
+  const positionRef = useRef(0);
 
   useEffect(() => {
     const track = trackRef.current;
     const firstSet = firstSetRef.current;
     if (!track || !firstSet) return;
 
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let animationFrame = 0;
     let previousTime = performance.now();
 
-    const normalizePosition = () => {
+    const normalizePosition = (position: number) => {
       const loopWidth = firstSet.offsetWidth;
-      if (!loopWidth) return;
+      if (!loopWidth) return position;
 
-      if (track.scrollLeft >= loopWidth) track.scrollLeft -= loopWidth;
-      if (track.scrollLeft < 0) track.scrollLeft += loopWidth;
+      return ((position % loopWidth) + loopWidth) % loopWidth;
     };
 
     const animate = (currentTime: number) => {
       const elapsed = Math.min(currentTime - previousTime, 50);
       previousTime = currentTime;
 
-      if (!pausedRef.current && !reducedMotion.matches) {
-        track.scrollLeft += elapsed * 0.026;
-        normalizePosition();
+      if (!pausedRef.current) {
+        // Accumulate fractional pixels separately so WebKit cannot round each
+        // individual frame back to zero before the carousel visibly advances.
+        positionRef.current = normalizePosition(positionRef.current + elapsed * 0.04);
+        track.scrollLeft = positionRef.current;
       }
 
       animationFrame = window.requestAnimationFrame(animate);
@@ -71,9 +72,8 @@ export function AlbumCarousel() {
       if (!movement || !loopWidth) return;
 
       event.preventDefault();
-      if (movement < 0 && track.scrollLeft <= 0) track.scrollLeft += loopWidth;
-      track.scrollLeft += movement;
-      normalizePosition();
+      positionRef.current = normalizePosition(track.scrollLeft + movement);
+      track.scrollLeft = positionRef.current;
     };
 
     track.addEventListener("wheel", browseWithWheel, { passive: false });
@@ -101,12 +101,21 @@ export function AlbumCarousel() {
           pausedRef.current = true;
         }}
         onMouseLeave={() => {
+          positionRef.current = trackRef.current?.scrollLeft ?? positionRef.current;
           pausedRef.current = false;
         }}
         onFocusCapture={() => {
           pausedRef.current = true;
         }}
         onBlurCapture={() => {
+          positionRef.current = trackRef.current?.scrollLeft ?? positionRef.current;
+          pausedRef.current = false;
+        }}
+        onTouchStart={() => {
+          pausedRef.current = true;
+        }}
+        onTouchEnd={() => {
+          positionRef.current = trackRef.current?.scrollLeft ?? positionRef.current;
           pausedRef.current = false;
         }}
         className="-mx-1 mt-2 flex overflow-x-auto px-1 pb-3 [scrollbar-color:#a8a29e_transparent] [scrollbar-width:thin]"

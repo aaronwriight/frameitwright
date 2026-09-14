@@ -6,6 +6,12 @@ html {
   color-scheme: light;
 }
 
+@media (max-width: 639px) {
+  html {
+    font-size: 87.5%;
+  }
+}
+
 html.dark {
   color-scheme: dark;
 }

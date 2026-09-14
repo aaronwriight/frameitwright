@@ -17,7 +17,7 @@ const albums = [
   { title: "From The Valley", artist: "Ilsey", href: "https://open.spotify.com/album/7FghAqLEF3Qvjv91tcwKTc", artwork: "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e029e499ddfba04184839c74179" },
   { title: "Devotion [Deluxe]", artist: "Sunday (1994)", href: "https://open.spotify.com/album/4QszKQEmQxFd6km1COQaoI", artwork: "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02c289027b369d78c5083a8f89" },
   { title: "Vice City Magic", artist: "Mustard Service", href: "https://open.spotify.com/album/4nYVLUVhQb9bD7l1QlYoFS", artwork: "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0232e541bf2b37baff5dc91f13" },
-  { title: "High Highs to Low Lows", artist: "Lolo Zouaï", href: "https://open.spotify.com/track/2aGNR8A6GnHqoM78T31CCC", artwork: "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e026ac6c80cfb715d6198652472" },
+  { title: "High Highs to Low Lows", artist: "Lolo Zouaï", href: "https://open.spotify.com/album/19MlQDyvGCFXcSaoPLJCAi", artwork: "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e026ac6c80cfb715d6198652472" },
   { title: "Jean", artist: "Yebba", href: "https://open.spotify.com/album/27SQuR7jPiGkJJXl8njEqY", artwork: "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e025932b2362d978f6fa10ca63e" },
   { title: "Cape God [Deluxe]", artist: "Allie X", href: "https://open.spotify.com/album/5czKm6HdhwZ8AXFLpcWxTE", artwork: "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0235ee1585d91ab7f073b6f6d6" },
   { title: "Essex Honey", artist: "Blood Orange", href: "https://open.spotify.com/album/5RUma3H9uzDLXxwT7JzTel", artwork: "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e020710ea6bfb5a1208a5105693" },
